@@ -29,7 +29,7 @@ const ProjectItem = (props) => {
             />
           </div>
           <div className={classes.content}>
-            <h3>{title}</h3>
+            <h4>{title}</h4>
             <time>{formmatedDate}</time>
             <p>{description}</p>
           </div>

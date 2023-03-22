@@ -5,16 +5,16 @@ import classes from './main-navigation.module.css'
 const MainNavigation = () => {
   return (
     <header className={classes.header}>
-      <Link href='/'>
+      {/* <Link href='/'>
         <a>
           <Logo />
         </a>
-      </Link>
+      </Link> */}
       <nav>
         <ul>
-          <li><Link href='/projects'>Projects</Link></li>
-          <li><Link href='/resume'>Resume</Link></li>
-          <li><Link href='/contact'>Contact</Link></li>
+          <li><Link href='/resume'>RESUME</Link></li>
+          <li><Link href='/projects'>PROJECTS</Link></li>
+          <li><Link href='/contact'>CONTACT</Link></li>
         </ul>
       </nav>
     </header>

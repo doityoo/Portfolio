@@ -3,6 +3,7 @@ import Ourselves from "../components/home-page/ourselves";
 import FeaturedProjects from "../components/home-page/featured-projects";
 import { getFeaturedProjects } from '../lib/projects-util'
 import Head from "next/head";
+import HomeResume from "../components/home-page/home-resume";
 
 const HomePage = (props) => {
   // const DUMMY_PROJECTS = [
@@ -45,6 +46,7 @@ const HomePage = (props) => {
         />
       </Head>
       <Ourselves />
+      <HomeResume />
       <FeaturedProjects projects={props.projects} />
     </Fragment>
 

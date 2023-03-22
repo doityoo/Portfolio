@@ -38,20 +38,25 @@ body {
   --size-5: 1.25rem;
   --size-6: 1.5rem;
   --size-8: 2rem;
+  --size-12: 3rem;
   --size-16: 4rem;
   --size-20: 5rem;
   --size-40: 10rem;
+  --size-60: 15rem;
+  --size-80: 20rem;
+  --size-120: 30rem;
 
   margin: 0;
-  background-color: var(--color-grey-500);
+  background-color: white;
   color: #252525;
   font-family: 'Roboto', sans-serif;
 }
 
 h1,
 h2,
-h3 {
-  font-family: 'Oswald', 'Roboto', sans-serif;
+h3,
+h4{
+  font-family: 'Arial', 'Roboto', sans-serif;
 }
 
 a {

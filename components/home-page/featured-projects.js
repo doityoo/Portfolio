@@ -5,7 +5,7 @@ import classes from './featured-projects.module.css'
 const FeaturedProjects = (props) => {
   return (
     <section className={classes.latest}>
-      <h2>Featured Projects</h2>
+      <h3>PROJECTS</h3>
       <ProjectGrid projects={props.projects} />
     </section>
   );
