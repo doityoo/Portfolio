@@ -12,6 +12,7 @@ const MainNavigation = () => {
       </Link> */}
       <nav>
         <ul>
+          <li><Link href='/'>HOME</Link></li>
           <li><Link href='/resume'>RESUME</Link></li>
           <li><Link href='/projects'>PROJECTS</Link></li>
           <li><Link href='/contact'>CONTACT</Link></li>

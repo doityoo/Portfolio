@@ -3,9 +3,10 @@ import ProjectItem from './project-item';
 
 const ProjectGrid = (props) => {
   const { projects } = props;
+
   return (
     <ul className={classes.grid}>
-      {projects && projects.map(project => <ProjectItem key={project.slug} project={project} />)}
+      {projects && projects.map(project => <ProjectItem key={project.id} project={project} />)}
     </ul>
   )
 };

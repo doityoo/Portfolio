@@ -1,8 +1,8 @@
 ---
-title: Mastering JavaScript
+title: See you Letter Project
 excerpt: JavaScript is the most important programming language for web development. You probably don't know it well enough!
 image: mastering-js-thumb.png
-isFeatured: false
+isFeatured: true
 date: '2021-10-30'
 ---
 
@@ -21,3 +21,4 @@ printBasics();
 ```
 
 Learn more about it [here](https://academind.com).
+

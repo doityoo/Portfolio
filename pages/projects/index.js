@@ -1,5 +1,5 @@
 import AllProjects from "../../components/projects/all-projects";
-import { getAllProjects } from "../../lib/projects-util";
+import { getAllProjectsNotion } from "../../lib/projects-util";
 import { Fragment } from "react";
 import Head from "next/head";
 
@@ -35,6 +35,14 @@ import Head from "next/head";
 // ]
 
 const AllProjectPage = (props) => {
+  console.log(props.projects.results)
+  const projects = props.projects.results;
+  
+  const a = projects.map((data) => {
+    return data.cover.external.url
+  })
+  console.log(a);
+
   return (
     <Fragment>
       <Head>
@@ -44,13 +52,13 @@ const AllProjectPage = (props) => {
           content="프론트엔드 개발자 유인태의 Projects입니다."
         />
       </Head>
-      <AllProjects projects={props.projects} />
+      <AllProjects projects={projects} />
     </Fragment>
   )
 };
 
-export const getStaticProps = () => {
-  const allProjects = getAllProjects()
+export const getStaticProps = async () => {
+  const allProjects = await getAllProjectsNotion()
   return {
     props: {
       projects: allProjects

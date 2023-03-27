@@ -3,13 +3,13 @@
 	/* max-width: 80rem; */
 	/* margin: var(--size-8) auto; */
 	/* border: solid 1px red; */
-	padding: var(--size-8) var(--size-60);
+	padding: var(--size-8) 25%;
 }
 
 .latest h3 {
 	font-size: var(--size-8);
 	color: var(--color-grey-800);
-	text-align: center;
+	/* text-align: center; */
 }
 
 @media (min-width: 768px) {
