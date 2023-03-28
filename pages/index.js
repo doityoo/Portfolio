@@ -54,8 +54,7 @@ const HomePage = (props) => {
 };
 
 export const getStaticProps = async () => {
-  const data = await getFeaturedProjects();
-  const featuredProject = data;
+  const featuredProject = await getFeaturedProjects();
   return {
     props: {
       projects: featuredProject

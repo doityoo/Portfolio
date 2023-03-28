@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
 import HomeResume from '../../components/home-page/home-resume';
-import { getAllProjectsNotion } from '../../lib/projects-util';
+import { getResume } from '../../lib/projects-util';
 
 const ResumePage = (props) => {
   const { resume } = props;
@@ -18,15 +18,14 @@ const ResumePage = (props) => {
         </Head>
       </Fragment>
       <section>
-        <HomeResume />
+        <HomeResume resume={props.resume} />
       </section>
     </div>
   );
 };
 
 export const getStaticProps = async () => {
-  const api = await getAllProjectsNotion();
-  console.log(api)
+  const api = await getResume();
   return {
     props: {
       resume: api

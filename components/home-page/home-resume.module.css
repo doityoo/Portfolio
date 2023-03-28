@@ -1,9 +1,9 @@
 .latest {
-	/* width: 90%; */
-	/* max-width: 80rem; */
-	/* margin: var(--size-8) auto; */
+	width: 90%;
+	max-width: 60rem;
+	margin: var(--size-8) auto;
 	/* border: solid 1px red; */
-	padding: var(--size-8) 25%;
+	/* padding: var(--size-8) auto; */
 }
 
 .latest h3 {

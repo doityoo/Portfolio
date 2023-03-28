@@ -1,9 +1,10 @@
 .latest {
-	/* width: 90%;
-  max-width: 80rem;
-  margin: var(--size-8) auto; */
+	width: 90%;
+	max-width: 60rem;
+	margin: var(--size-8) auto;
 	/* border: solid 1px red; */
-	padding: var(--size-8) 25%;
+	/* padding: var(--size-8) 25%;  */
+	/* background-color: grey; */
 }
 
 .latest h3 {
@@ -16,6 +17,39 @@
 	font-size: var(--size-6);
 	color: var(--color-grey-800);
 	text-align: center;
+}
+
+.gradiention {
+	/* border: 1px solid red; */
+	width: 90%;
+	height: 465px;
+	max-height: 60rem;
+	max-width: 60rem;
+	position: absolute;
+	background-image: linear-gradient(
+		to top,
+		rgb(211, 211, 211),
+		rgba(255, 255, 255, 0) 30%
+	);
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.addButton {
+	position: absolute;
+	/* margin: auto; */
+	z-index: 2;
+	cursor: pointer;
+	background-color: black;
+	color: white;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	font-size: 0.7rem;
+	border: none;
+	margin-bottom: -2%;
 }
 
 @media (min-width: 768px) {
