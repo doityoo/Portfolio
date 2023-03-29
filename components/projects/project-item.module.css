@@ -24,8 +24,8 @@
 	padding: var(--size-4);
 }
 
-.content h3 {
-	margin: var(--size-2) 0;
+.content h4 {
+	margin: var(--size-4) 0;
 	font-size: var(--size-6);
 }
 
@@ -36,4 +36,16 @@
 
 .content p {
 	line-height: var(--size-6);
+}
+
+.members {
+	font-size: 0.9rem;
+	margin-top: 5%;
+	color: rgb(55, 55, 55);
+}
+
+.dsc {
+		font-size: 0.9rem;
+	color: rgb(55, 55, 55);
+
 }
