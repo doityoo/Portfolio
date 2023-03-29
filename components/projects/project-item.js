@@ -6,27 +6,11 @@ import Image from 'next/image';
 const ProjectItem = (props) => {
   const { url, cover, icon, properties, id } = props.project;
 
-  
-  // console.log("url: ", url)
-  // console.log("img: ", cover.external.url)
-  // console.log("icon: ", icon.emoji)
-  // console.log("desc: ", properties.Description.rich_text[0].plain_text)
-  // console.log("stack: ", properties.Stack.multi_select)
-  // console.log("title: ", properties.이름.title[0].plain_text)
-  // console.log("URL: ", properties.URL.url)
-  // console.log("ID: ", id)
-
-
-  // const { title, image, description, date, slug } = props.project;
-
   // const formmatedDate = new Date(date).toLocaleDateString('en-US', {
   //   day: 'numeric',
   //   month: 'long',
   //   year: 'numeric',
   // })
-
-  // const imagePath = `/images/projects/${slug}/${image}`;
-  // const linkPath = `/projects/${slug}`;
 
   return (
     <li className={classes.project}>
@@ -34,7 +18,7 @@ const ProjectItem = (props) => {
         <a>
           <div className={classes.image}>
             <Image
-              src={cover.external.url}
+              src={cover.file? cover.file.url : cover.external.url}
               alt={properties.이름.title[0].plain_text}
               width={300}
               height={200}

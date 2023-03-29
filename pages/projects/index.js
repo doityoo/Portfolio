@@ -35,13 +35,8 @@ import Head from "next/head";
 // ]
 
 const AllProjectPage = (props) => {
-  console.log(props.projects.results)
-  const projects = props.projects.results;
-  
-  const a = projects.map((data) => {
-    return data.cover.external.url
-  })
-  console.log(a);
+  const projects = props.projects;
+  console.log(projects)
 
   return (
     <Fragment>
