@@ -9,19 +9,15 @@ const FeaturedProjects = (props) => {
   const projects = props.projects;
   console.log('Home-Projects: ',projects)
 
-  const moveProjects = () => {
-    return
-  }
-
   return (
     <section className={classes.latest}>
       <h3>PROJECTS</h3>
       <ul className={classes.grid}>
         {projects && projects.map(project => <ProjectItem key={project.id} project={project} />)}
         <div className={classes.gradiention}>
-          <button className={classes.addButton} onClick={moveProjects}>
+          <button className={classes.addButton}>
             <Link href='/projects'>
-              더보기
+              ● ● ●
             </Link>
           </button>
         </div>

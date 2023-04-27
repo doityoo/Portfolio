@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
-import HomeResume from '../../components/home-page/home-resume';
+import Resume from '../../components/resume/resume';
 import { getAllProjects } from '../../lib/projects-util';
 
 const ResumePage = (props) => {
@@ -18,7 +18,7 @@ const ResumePage = (props) => {
         </Head>
       </Fragment>
       <section>
-        <HomeResume resume={resume} />
+        <Resume resume={resume} />
       </section>
     </div>
   );

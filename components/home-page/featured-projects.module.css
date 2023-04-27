@@ -25,7 +25,6 @@
 	grid-template-columns: repeat(2, minmax(20rem, 1fr));
 	gap: 7%;
 	align-content: center;
-	z-index: 0;
 }
 
 .gradiention {
@@ -48,7 +47,7 @@
 	position: absolute;
 	z-index: 2;
 	cursor: pointer;
-	background-color: black;
+	background-color: rgb(30, 30, 30);
 	color: white;
 	border-radius: 50%;
 	width: 50px;

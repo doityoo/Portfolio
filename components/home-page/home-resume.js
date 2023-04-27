@@ -1,6 +1,7 @@
 // import ProjectGrid from '../projects/project-grid';
 import classes from './home-resume.module.css'
 import ReactMarkdown from 'react-markdown';
+import Link from "next/link";
 
 
 const HomeResume = (props) => {
@@ -11,12 +12,18 @@ const HomeResume = (props) => {
       {/* <ProjectGrid
         projects={props.projects}
       /> */}
-      <ReactMarkdown
+      <div className={classes.gradiention}>
+        <ReactMarkdown className={classes.markdown}
         // components={customRenderers}
-      >
-        {resume.content}
-      </ReactMarkdown>
-
+        >
+          {resume.content}
+        </ReactMarkdown>
+        <button className={classes.addButton}>
+          <Link href='/resume'>
+            ● ● ●
+          </Link>
+        </button>
+      </div>
     </section>
   );
 };
