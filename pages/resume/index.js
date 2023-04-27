@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
 import HomeResume from '../../components/home-page/home-resume';
-import { getResume } from '../../lib/projects-util';
+import { getAllProjects } from '../../lib/projects-util';
 
 const ResumePage = (props) => {
   const { resume } = props;
-  console.log(resume);
+  console.log("resume: ", resume);
   return (
     <div>
       <Fragment>
@@ -18,17 +18,17 @@ const ResumePage = (props) => {
         </Head>
       </Fragment>
       <section>
-        <HomeResume resume={props.resume} />
+        <HomeResume resume={resume} />
       </section>
     </div>
   );
 };
 
 export const getStaticProps = async () => {
-  const api = await getResume();
+  const reusme = await getAllProjects();
   return {
     props: {
-      resume: api
+      resume: reusme
     },
     revalidate: 1800,
   }
