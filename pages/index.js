@@ -1,43 +1,13 @@
 import { Fragment } from "react";
 import Ourselves from "../components/home-page/ourselves";
 import FeaturedProjects from "../components/home-page/featured-projects";
-import { getFeaturedProjects, getAllProjects } from '../lib/projects-util'
+import { getFeaturedProjects } from '../lib/projects-util'
 import Head from "next/head";
 import HomeResume from "../components/home-page/home-resume";
 
 const HomePage = (props) => {
   console.log('resume: ', props.resume)
 
-  // const DUMMY_PROJECTS = [
-  //   {
-  //     slug: "getting-started-with-nextjs01",
-  //     title: "Getting Started with NextJS01",
-  //     image: "getting-started-with-nextjs01.jpg",
-  //     description: '지금은 더미데이터로 테스트 중입니다.',
-  //     date: '2023-03-10'
-  //   },
-  //   {
-  //     slug: "getting-started-with-nextjs02",
-  //     title: "Getting Started with NextJS02",
-  //     image: "getting-started-with-nextjs02.jpg",
-  //     description: '지금은 더미데이터로 테스트 중입니다.',
-  //     date: '2023-03-10'
-  //   },
-  //   {
-  //     slug: "getting-started-with-nextjs03",
-  //     title: "Getting Started with NextJS03",
-  //     image: "getting-started-with-nextjs03.jpg",
-  //     description: '지금은 더미데이터로 테스트 중입니다.',
-  //     date: '2023-03-10'
-  //   },
-  //   {
-  //     slug: "getting-started-with-nextjs04",
-  //     title: "Getting Started with NextJS04",
-  //     image: "getting-started-with-nextjs04.jpg",
-  //     description: '지금은 더미데이터로 테스트 중입니다.',
-  //     date: '2023-03-10'
-  //   },
-  // ]
   return (
     <Fragment>
       <Head>
@@ -48,7 +18,7 @@ const HomePage = (props) => {
         />
       </Head>
       <Ourselves />
-      <HomeResume resume={props.resume} />
+      <HomeResume />
       <FeaturedProjects projects={props.projects} />
     </Fragment>
 
@@ -57,11 +27,9 @@ const HomePage = (props) => {
 
 export const getStaticProps = async () => {
   const featuredProject = await getFeaturedProjects();
-  const resume = await getAllProjects();
   return {
     props: {
       projects: featuredProject,
-      resume: resume
     }
   }
 }

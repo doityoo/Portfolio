@@ -2,8 +2,7 @@
 	width: 90%;
 	max-width: 60rem;
 	margin: var(--size-8) auto;
-	/* border: solid 1px red; */
-	/* padding: var(--size-8) auto; */
+
 }
 
 .latest h3 {
@@ -27,10 +26,7 @@
 	min-width: 688px;
 }
 
-.markdown {
-	overflow: hidden;
-	height: 900px;
-	pointer-events: none;
+.iframe {
 	z-index: -1;
 }
 

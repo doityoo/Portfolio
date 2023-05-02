@@ -1,23 +1,12 @@
-// import ProjectGrid from '../projects/project-grid';
 import classes from './home-resume.module.css'
-import ReactMarkdown from 'react-markdown';
 import Link from "next/link";
 
-
-const HomeResume = (props) => {
-  const resume = props.resume[2];
+const HomeResume = () => {
   return (
     <section className={classes.latest} >
       <h3>RESUME</h3>
-      {/* <ProjectGrid
-        projects={props.projects}
-      /> */}
       <div className={classes.gradiention}>
-        <ReactMarkdown className={classes.markdown}
-        // components={customRenderers}
-        >
-          {resume.content}
-        </ReactMarkdown>
+        <iframe className={classes.iframe} src="/resume.html" width="100%" height="900px" style={{ border: 'none' }} scrolling="no" />
         <button className={classes.addButton}>
           <Link href='/resume'>
             ● ● ●
