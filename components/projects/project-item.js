@@ -4,13 +4,7 @@ import Image from 'next/image';
 
 // 데이터 페칭하거나 useEffect로 페칭하지 않고 props로 데이터 전달 예정
 const ProjectItem = (props) => {
-  const { url, cover, icon, properties, id } = props.project;
-
-  // const formmatedDate = new Date(date).toLocaleDateString('en-US', {
-  //   day: 'numeric',
-  //   month: 'long',
-  //   year: 'numeric',
-  // })
+  const { url, cover, properties } = props.project;
 
   return (
     <li className={classes.project}>

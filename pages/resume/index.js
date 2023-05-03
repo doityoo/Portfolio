@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
 import Resume from '../../components/resume/resume';
-import { getAllProjects } from '../../lib/projects-util';
+import { getAllResume } from '../../lib/projects-util';
 
 const ResumePage = (props) => {
   const { resume } = props;
-  console.log("resume: ", resume);
   return (
     <div>
       <Fragment>
@@ -25,7 +24,7 @@ const ResumePage = (props) => {
 };
 
 export const getStaticProps = async () => {
-  const reusme = await getAllProjects();
+  const reusme = await getAllResume();
   return {
     props: {
       resume: reusme

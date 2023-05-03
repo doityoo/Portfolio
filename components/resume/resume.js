@@ -1,6 +1,5 @@
 // import ProjectGrid from '../projects/project-grid';
 import classes from './resume.module.css'
-import ReactMarkdown from 'react-markdown';
 
 const Resume = () => {
   return (

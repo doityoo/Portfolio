@@ -3,11 +3,9 @@ import classes from './featured-projects.module.css'
 import ProjectItem from './../projects/project-item';
 import Link from "next/link";
 
-
 // 해당 컴포넌트의 props는 pages dir의 index.js에서 가져오는 것.
 const FeaturedProjects = (props) => {
   const projects = props.projects;
-  console.log('Home-Projects: ',projects)
 
   return (
     <section className={classes.latest}>
@@ -22,7 +20,6 @@ const FeaturedProjects = (props) => {
           </button>
         </div>
       </ul>
-      {/* <ProjectGrid projects={props.projects} /> */}
     </section>
   );
 }

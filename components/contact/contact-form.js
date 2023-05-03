@@ -35,15 +35,6 @@ const ContactForm = () => {
       setEnteredEmail('');
       setEnteredName('');
       setEnteredMessage('');
-      // fetch('/api/contact', {
-      //   method: 'POST',
-      //   body: JSON.stringify({
-      //     email: enteredEmail,
-      //     name: enteredName,
-      //     message: enteredMessage
-      //   }),
-      //   headers: { 'Content-Type': 'application/json' }
-      // })
     } catch (error) {
       setRequestState('error');
     }

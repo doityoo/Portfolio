@@ -6,7 +6,6 @@ import Head from "next/head";
 import HomeResume from "../components/home-page/home-resume";
 
 const HomePage = (props) => {
-  console.log('resume: ', props.resume)
 
   return (
     <Fragment>
