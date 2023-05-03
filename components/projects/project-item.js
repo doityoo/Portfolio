@@ -22,7 +22,7 @@ const ProjectItem = (props) => {
           </div>
           <div className={classes.content}>
             <h4>{properties.이름.title[0].plain_text}</h4>
-            {properties.Stack.multi_select.map((stack) => {
+            {properties.Stack.multi_select.map((stack, index) => {
               return <span style={{
                 backgroundColor: stack.color,
                 display: 'inline-block',
@@ -31,7 +31,8 @@ const ProjectItem = (props) => {
                 marginRight: '2%',
                 padding: '1%',
                 fontSize: '0.7rem'
-              }}>{stack.name}</span>
+              }}
+                key={index}>{stack.name}</span>
             })}
             <div className={classes.members}>{properties.Members.rich_text[0].text.content}</div>
             <p className={classes.dsc}>{properties.Description.rich_text[0].plain_text}</p>
