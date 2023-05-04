@@ -20,7 +20,6 @@ const HomePage = (props) => {
       <HomeResume />
       <FeaturedProjects projects={props.projects} />
     </Fragment>
-
   );
 };
 
