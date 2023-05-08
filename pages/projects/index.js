@@ -5,6 +5,7 @@ import Head from "next/head";
 
 const AllProjectPage = (props) => {
   const projects = props.projects;
+  console.log(projects)
 
   return (
     <Fragment>
