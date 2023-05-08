@@ -2,7 +2,7 @@
 	background-color: white;
 	width: 90%;
 	max-width: 60rem;
-	margin: var(--size-20) auto;
+	margin: var(--size-40) auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
