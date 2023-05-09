@@ -57,7 +57,7 @@
   border: var(--color-primary-700);
   padding: var(--size-2) var(--size-4);
   border-radius: 4px;
-  font-size: small;
+  font-size: smaller;
   /* color: var(--color-primary-50); */
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
