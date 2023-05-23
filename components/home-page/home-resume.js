@@ -6,7 +6,7 @@ const HomeResume = () => {
     <section className={classes.latest} >
       <h3>RESUME</h3>
       <div className={classes.gradiention}>
-        <iframe className={classes.iframe} src="/resume.html" width="100%" height="900px" style={{ border: 'none' }} scrolling="no" />
+        <iframe className={classes.iframe} src="/resume.html" width="100%" height="900px" style={{ border: 'none' }} scrolling="no" target="_blank" />
         <button className={classes.addButton}>
           <Link href='/resume'>
             ● ● ●
