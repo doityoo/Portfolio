@@ -1,7 +1,8 @@
 .latest {
 	width: 90%;
 	max-width: 60rem;
-	margin: var(--size-8) auto;
+	margin: 9rem auto;
+
 	/* border: solid 1px red; */
 	/* padding: var(--size-8) auto; */
 }

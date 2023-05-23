@@ -1,10 +1,9 @@
 .contact {
-  margin: var(--size-8) auto;
+  margin: 9rem auto;
   border-radius: 6px;
   /* background-color: var(--color-grey-100); */
   width: 90%;
   max-width: 50rem;
-  padding: var(--size-4);
   /* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); */
   font-size: var(--size-6);
 }
@@ -53,7 +52,8 @@
 .form button {
   font: inherit;
   cursor: pointer;
-  background-color: var(--color-grey-100);
+  background-color: rgb(167, 74, 8);
+  color: white;
   border: var(--color-primary-700);
   padding: var(--size-2) var(--size-4);
   border-radius: 4px;
