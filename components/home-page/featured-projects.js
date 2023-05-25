@@ -8,19 +8,20 @@ const FeaturedProjects = (props) => {
   const projects = props.projects;
 
   return (
-    <section className={classes.latest}>
-      <h3>PROJECTS</h3>
-      <ul className={classes.grid}>
-        {projects && projects.map(project => <ProjectItem key={project.id} project={project} />)}
-        <div className={classes.gradiention}>
-          <button className={classes.addButton}>
-            <Link href='/projects'>
-              ● ● ●
-            </Link>
-          </button>
-        </div>
-      </ul>
-    </section>
+    <div className={classes.sectionWrapper}>
+      <section className={classes.latest}>
+        <h3>PROJECTS</h3>
+        <div className={classes.sectionBackground}></div>
+        <button className={classes.addButton}>
+          <Link href='/projects'>
+            ● ● ●
+          </Link>
+        </button>
+        <ul className={classes.grid}>
+          {projects && projects.map(project => <ProjectItem key={project.id} project={project} />)}
+        </ul>
+      </section>
+    </div>
   );
 }
 

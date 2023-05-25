@@ -4,9 +4,15 @@ import Link from "next/link";
 const HomeResume = () => {
 
   return (
-    <section className={classes.latest} >
-      <h3>RESUME</h3>
-      <div className={classes.gradiention}>
+    <div className={classes.sectionWrapper}>
+      <section className={classes.latest} >
+        <h3>RESUME</h3>
+        <div className={classes.sectionBackground}></div>
+        <button className={classes.addButton}>
+          <Link href='/resume'>
+            ● ● ●
+          </Link>
+        </button>
         <iframe
           className={classes.iframe}
           src="/resume.html"
@@ -15,13 +21,8 @@ const HomeResume = () => {
           style={{ border: 'none' }}
           scrolling="no"
         />
-        <button className={classes.addButton}>
-          <Link href='/resume'>
-            ● ● ●
-          </Link>
-        </button>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

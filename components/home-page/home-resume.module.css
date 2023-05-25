@@ -1,8 +1,9 @@
 .latest {
-	width: 90%;
+	position: relative;
+	width: 100%;
 	max-width: 60rem;
 	margin: var(--size-8) auto;
-
+	z-index: 1;
 }
 
 .latest h3 {
@@ -11,19 +12,25 @@
 	/* text-align: center; */
 }
 
-.gradiention {
+.sectionWrapper {
+	position: relative;
+	width: 90%;
+	margin: var(--size-8) auto;
+	align-items: center; /* 수직 정렬: 중앙 */
+}
+
+.sectionBackground {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
-	height: -webkit-fill-available;
+	height: 100%;
 	background-image: linear-gradient(
 		to top,
 		rgb(211, 211, 211),
 		rgba(255, 255, 255, 0) 30%
 	);
-	box-shadow: 0px 7px 5px -5px rgb(114, 114, 114);
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
-	/* min-width: 688px; */
+	z-index: 2;
 }
 
 .iframe {
@@ -32,7 +39,7 @@
 
 .addButton {
 	position: absolute;
-	z-index: 2;
+	z-index: 3;
 	cursor: pointer;
 	background-color: rgb(167, 74, 8);
 	color: white;
@@ -41,7 +48,9 @@
 	height: 50px;
 	font-size: 0.7rem;
 	border: none;
-	margin-bottom: -1.5%;
+	bottom: 0; /* 하단에 위치 */
+	left: 50%; /* 좌우 동일하게 */
+	transform: translate(-50%, 50%); /* 수평, 수직 정렬: 중앙 */
 	text-align: center;
 	text-decoration: none;
 }

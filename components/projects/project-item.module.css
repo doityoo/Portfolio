@@ -1,5 +1,5 @@
 .project {
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+	/* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); */
 	background-color: var(--color-grey-100);
 	text-align: center;
 }
@@ -45,7 +45,11 @@
 }
 
 .dsc {
-		font-size: 0.9rem;
+	font-size: 0.9rem;
 	color: rgb(55, 55, 55);
-
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
 }

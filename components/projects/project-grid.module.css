@@ -3,8 +3,9 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(1, minmax(20rem, 1fr));
+  grid-template-columns: repeat(2, minmax(20rem, 1fr));
   gap: 5.5rem;
+  height: fit-content;
   align-content: center;
 /*   
 	display: flex;
