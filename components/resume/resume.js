@@ -24,7 +24,7 @@ const Resume = () => {
         ref={iframeRef}
         src="/resume.html"
         width="100%"
-        height="3500px"
+        height="4300px"
         style={{ border: 'none' }}
         scrolling="no"
         target="_blank"
