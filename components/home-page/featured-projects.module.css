@@ -1,9 +1,9 @@
 .latest {
+	z-index: 1;
 	position: relative;
 	width: 100%;
 	max-width: 60rem;
 	margin: var(--size-8) auto;
-	z-index: 1;
 }
 
 .latest h3 {
@@ -25,12 +25,12 @@
 	padding: 0;
 	grid-template-columns: repeat(1, minmax(20rem, 1fr));
 	gap: 2%;
-	/* margin-bottom: 100px; */
+	margin-bottom: 70px;
 }
 
 .addButton {
-	position: absolute;
 	z-index: 3;
+	position: absolute;
 	cursor: pointer;
 	background-color: rgb(167, 74, 8);
 	color: white;
@@ -39,7 +39,7 @@
 	height: 50px;
 	font-size: 0.7rem;
 	border: none;
-	bottom: 0; /* 하단에 위치 */
+	bottom: -20px; /* 하단에 위치 */
 	left: 50%; /* 좌우 동일하게 */
 	transform: translate(-50%, 50%); /* 수평, 수직 정렬: 중앙 */
 	text-align: center;
@@ -53,13 +53,13 @@
 .sectionWrapper {
 	position: relative;
 	width: 90%;
-	margin: var(--size-8) auto;
+	margin: var(--size-16) auto;
 	align-items: center; /* 수직 정렬: 중앙 */
 }
 
 .sectionBackground {
 	position: absolute;
-	top: 0;
+	top: 20px;
 	left: 0;
 	width: 100%;
 	height: 100%;

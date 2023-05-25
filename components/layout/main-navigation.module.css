@@ -45,3 +45,16 @@
 	font-weight: bold;
 }
 
+@media only screen and (max-width: 414px) {
+	.header a {
+		font-size: 1rem;
+	}
+
+	.header li {
+		margin: 0 0.5rem;
+	}
+
+	.header li:not(:last-child) {
+		margin-right: 1rem;
+	}
+}

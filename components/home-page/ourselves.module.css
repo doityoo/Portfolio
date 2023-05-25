@@ -30,12 +30,20 @@
 
 @media only screen and (max-width: 414px) {
 	.ourselves {
-		padding-left: 0;
-		padding-right: 0;
+		margin: var(--size-40) auto;
 	}
 
-	.ourselves h2,
+	.ourselves h1 {
+		font-size: 2.5rem;
+		margin: var(--size-1) 0;
+		color: var(--color-grey-900);
+	}
+	.ourselves h2 {
+		font-size: 0.9rem;
+		max-width: 40rem;
+		margin: var(--size-20) 0 var(--size-3) 0;
+	}
 	.ourselves div {
-		width: 100%;
+		font-size: 0.9rem;
 	}
 }
