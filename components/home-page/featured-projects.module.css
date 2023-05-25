@@ -22,7 +22,7 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	grid-template-columns: repeat(2, minmax(20rem, 1fr));
+	grid-template-columns: repeat(1, minmax(20rem, 1fr));
 	gap: 7%;
 	align-content: center;
 }
@@ -40,7 +40,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
-	min-width: 688px;
+	/* min-width: 688px; */
 }
 
 .addButton {

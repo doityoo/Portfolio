@@ -23,7 +23,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
-	min-width: 688px;
+	/* min-width: 688px; */
 }
 
 .iframe {
