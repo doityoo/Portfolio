@@ -4,7 +4,7 @@ import ProjectGrid from './project-grid';
 const AllProjects = (props) => {
   return (
     <section className={classes.projects}>
-      <h1>All Projects</h1>
+      <h1>All PROJECTS</h1>
       <ProjectGrid projects={props.projects} />
     </section>
   );

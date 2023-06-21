@@ -66,7 +66,7 @@ const ContactForm = () => {
 
   return (
     <section className={classes.contact}>
-      <h1>Contact</h1>
+      <h1>CONTACT</h1>
       <form className={classes.form} onSubmit={sendMessageHandler}>
         <div className={classes.controls}>
           <div className={classes.control}>
