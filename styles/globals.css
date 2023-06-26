@@ -68,8 +68,8 @@ button {
 	cursor: pointer;
 }
 
-@media only screen and (min-width: 414px) {
+@media only screen and (max-width: 414px) {
 	h1 {
-		font-size: 0.2rem;
+		
 	}
 }
