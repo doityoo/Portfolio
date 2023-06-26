@@ -1,683 +1,1215 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>FRONTEND 유인태</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
-	}
-}
-
-body {
-	line-height: 1.5;
-	white-space: pre-wrap;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 3px;
-	padding: 1rem;
-}
-
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.column-list {
-	display: flex;
-	justify-content: space-between;
-}
-
-.column {
-	padding: 0 1em;
-}
-
-.column:first-child {
-	padding-left: 0;
-}
-
-.column:last-child {
-	padding-right: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding: 0.125rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-	border-collapse: collapse;
-}
-
-table {
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-block;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	transform: scale(1.5);
-	margin-right: 0.6em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1.25em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(55, 53, 47, 1);
-}
-.highlight-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.highlight-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.highlight-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.highlight-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.highlight-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.highlight-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.highlight-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.highlight-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.highlight-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.highlight-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.highlight-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.highlight-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.highlight-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.highlight-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.highlight-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.block-color-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.block-color-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.block-color-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.block-color-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.block-color-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.block-color-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.block-color-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.block-color-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.block-color-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.block-color-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.block-color-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.block-color-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
-.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
-.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
-.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
-.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
-.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
-.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
-.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
-.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-	
-</style></head><body><article id="51e25b25-8710-443f-afe7-543dc52f8d4c" class="page sans"><header><h1 class="page-title">FRONTEND 유인태</h1></header><div class="page-body"><div id="cccf25d5-ef14-4af8-896d-0065aa4e7505" class="column-list"><div id="2303efad-5856-48a3-91c1-7dbfa300b05f" style="width:62.5%" class="column"><h3 id="24a2383c-0cb2-41d6-b172-ae3330f06382" class="">코드와 씨름을 잘 합니다. 
-문제 해결을 위해 포기하지 않습니다. 
-’함께’라는 단어를 삶의 중요한 가치로 생각합니다.</h3><p id="bb86d71c-f708-42b0-a13e-a357cadb1280" class="">
-</p><p id="065618f5-7b1f-43b1-a996-d2c14c380708" class="">📞  <mark class="highlight-brown"><strong>PHONE:</strong></mark> 010-5540-1981</p><p id="67f4528d-3034-41e8-bd10-d2d289b6b93b" class="">📧  <mark class="highlight-purple"><strong>EMAIL:</strong></mark> honesty407@gmail.com</p><p id="4d18837c-9a3a-4c2a-a50f-cf15c80f9158" class="">✍🏻  <strong><mark class="highlight-orange">BLOG: </mark></strong><a href="https://do-youit.tistory.com/">do-youit.tistory.com</a></p><p id="ef1c9634-c9f9-4e4c-b7c2-0061ff3ae3e6" class="">💻  <strong><mark class="highlight-teal">GITHUB: </mark></strong><a href="https://github.com/doityoo">github.com/doityoo</a></p>
-	<!-- <p id="a4e14aac-c2e9-4fd5-a98d-5740a9ce8262" class="">📋  <mark class="highlight-yellow"><strong>RESUME</strong></mark><mark class="highlight-teal"><strong>: </strong></mark><a href="https://url.kr/7jxw4e">https://url.kr/7jxw4e</a></p> -->
-	<!-- <p id="c9b79a43-a8b0-4aaa-8657-d2f21ec3f974" class=""></p> -->
-</div><div id="227621c2-6713-4bee-9bd6-76f9d12ab6ea" style="width:37.49999999999999%" class="column"><figure id="2ea49050-ad35-4df1-ad28-3b45a4e6ca4f" class="image" style="text-align:right"><a href="./resume/resume.png"><img style="width:192px" src="./resume/resume.png"/></a></figure></div></div><h2 id="18fb6379-4bdf-4ed8-81ae-66b179076b7b" class=""><mark class="highlight-red">01.</mark> Skills</h2><hr id="ea61a2f6-aad9-47ce-b070-f191df00831d"/><div id="cc44959a-23de-43bf-9fd8-01b76ac56120" class="column-list"><div id="0d22637b-a3eb-4023-90ee-936bae4d15cc" style="width:33.333333333333336%" class="column"><p id="b62995f1-9648-44cb-9089-0bd8ef304067" class="">💻 <strong>Programming Language</strong></p><ul id="aca54bff-78b4-4da6-a8e8-58b27d28b0e9" class="bulleted-list"><li style="list-style-type:disc">Javascript</li></ul><ul id="ec449bab-8dc8-49cd-8bfc-84a15f3b5c91" class="bulleted-list"><li style="list-style-type:disc">TypeScript</li></ul><ul id="29c0f25b-6cc8-4a58-91ff-6586e4ec52fb" class="block-color-gray bulleted-list"><li style="list-style-type:disc">HTML</li></ul><ul id="a97ecf5b-562f-4a9a-83c6-f2f6f11b1567" class="block-color-gray bulleted-list"><li style="list-style-type:disc">CSS</li></ul><p id="caa8088a-854b-450e-af53-aad360adc974" class="">
-</p></div><div id="65c4d370-6c7e-49d0-9cd5-cbee0a5f7fe0" style="width:33.333333333333336%" class="column"><p id="ebe4b742-8cad-4a29-8e34-14f36911703d" class="">📋 <strong>FrameWork &amp; Library</strong></p><ul id="8ea251cf-14c4-4ed5-b180-b4e0cb6df451" class="bulleted-list"><li style="list-style-type:disc">React</li></ul><ul id="710d9365-d448-4d4d-950a-1738173a0bb8" class="bulleted-list"><li style="list-style-type:disc">Next.js</li></ul><ul id="cc990c45-1f0e-44cd-9e8d-8a3c65273785" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Redux-toolkit</li></ul><ul id="a7eedae6-5b53-4940-af10-cee445fcc321" class="block-color-gray bulleted-list"><li style="list-style-type:disc">styled-components</li></ul><ul id="41dd4908-6114-4537-87c2-30be78177fb7" class="block-color-gray bulleted-list"><li style="list-style-type:disc">module-css</li></ul></div><div id="7f2f1dc0-04ac-4167-852e-29d923c8fa4a" style="width:33.33333333333333%" class="column"><p id="b7015752-1b92-4cbd-bbcc-9cab959a011f" class="">🛠️ <strong>Tools & DB</strong></p><ul id="6f794dbd-00d1-4dec-92f9-d71d426042f6" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Git</li></ul><ul id="61f520a1-45fd-4579-9446-7bd6134ceacb" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Postman</li></ul><ul id="a6eaeb91-09f7-4eb2-96c6-0eaa43c2b8cc" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Notion</li></ul><ul id="0e8ce437-051c-4a10-b1e2-7750410cfff6" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Firebase(extensions)</li></ul><ul id="8f35ef3e-d4d0-4870-8936-dc1e4c2ae515" class="block-color-gray bulleted-list"><li style="list-style-type:disc">MongoDB</li></ul><ul id="6e7a5a01-65ad-4bcd-bd51-8818a205d1bf" class="block-color-gray bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">AWS</mark></li></ul><ul id="9d9517e4-ba79-4df1-b13b-d319cdc9fdf3" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Figma</li></ul><ul id="9d9517e4-ba79-4df1-b13b-d319cdc9fdf3" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Adobe illustrator, Photoshop, Lightroom</li></ul></div></div><h2 id="62dfe595-4f09-4f1b-a8eb-f8a8fd599de8" class=""><mark class="highlight-red">02.</mark> Projects</h2><hr id="296c3458-3d29-44c2-bf2a-08f58234977d"/><div id="219065b4-b6ee-444e-858a-9746649359f1" class="column-list"><div id="1edd5fe0-258f-486c-980c-d863741c5219" style="width:18.75%" class="column"><p id="c64fa9c0-1cb2-4505-ae3d-e44d5ed9d40a" class="">2023.04</p><p id="7db3e7f4-77ef-41ee-9ea3-4883852e6191" class="">
-</p></div><div id="e432b67c-68bb-4252-83fe-d046aac94ac0" style="width:81.25%" class="column"><p id="b7f4bab5-d657-47ac-9b1d-3a79a5e71e89" class="block-color-gray_background"><mark class="highlight-orange"><strong>TaskBoard(Solo Toy Project)</strong></mark></p><p id="c44004e7-2bb0-455a-9c99-e93c4700f2e0" class="">TypeScript를 사용하여 기본적인 TaskBoard를 만들었습니다.</p><p id="d7c0cadb-1727-4021-bb37-a464d43e4967" class=""> <a href="https://github.com/doityoo/TasksBoard"><strong><code>Github</code></strong></a><strong> </strong>| <a href="https://seeyouletter-735f3.web.app"><code><strong>Deploy</strong></code></a></p><p id="b38f229e-b5f7-4fe1-94d4-639e28ad62aa" class=""><strong><mark class="highlight-blue"><span style="border-bottom:0.05em solid">👉🏻 프로젝트에 대한 자세한 내용은 </span></mark></strong><a href="https://www.notion.so/TaskBoard-46af97bed70e4ff39792038457a76aba"><mark class="highlight-orange"><strong><span style="border-bottom:0.05em solid">노션문서</span></strong></mark></a><strong><mark class="highlight-blue"><span style="border-bottom:0.05em solid">에서 확인하실 수 있습니다</span></mark></strong></p><p id="aa5a3789-4ffa-458d-b99c-9e4336939fac" class="">Stack: <mark class="highlight-gray">TypeScript,  CSS modules, Firebase</mark></p></div></div><div id="938c0af3-b484-4e5e-9b1d-6f4eb8d8c909" class="column-list"><div id="7ee03d37-6838-46c1-bf64-04ab64724061" style="width:18.75%" class="column"><p id="554b9a2a-55b8-4203-b668-e04eacc36b92" class="">2023.04</p><p id="c844e29d-74bb-453f-92a4-89d34caeac1a" class="">
-</p></div><div id="871dfba7-5cc9-44de-816b-9374dd75453f" style="width:81.25%" class="column"><p id="d361723e-7735-464a-a35d-001bb44297b5" class="block-color-gray_background"><mark class="highlight-orange"><strong>Portfolio(Solo Web Site)</strong></mark></p><p id="c9ed7fd1-b68e-492e-8b76-939cd3f3114f" class="">Next.js를 학습하며 개인 포트폴리오 웹사이트를 제작했습니다.</p><p id="81d84d66-9f7d-446a-a1c4-7c7e72d068c5" class=""> <a href="https://github.com/doityoo/Portfolio"><strong><code>Github</code></strong></a><strong> </strong>| <a href="https://seeyouletter-735f3.web.app"><code><strong>Deploy</strong></code></a></p><p id="7bdb6334-b709-445e-b5c5-7b552259a2c8" class=""><strong><mark class="highlight-blue"><span style="border-bottom:0.05em solid">👉🏻 프로젝트에 대한 자세한 내용은 </span></mark></strong><mark class="highlight-orange"><a href="https://www.notion.so/Portfolio-Resume-b79a6d85f16443f3a1a9858ade71e0c9"><strong><span style="border-bottom:0.05em solid">노션문서</span></strong></a></mark><strong><mark class="highlight-blue"><span style="border-bottom:0.05em solid">에서 확인하실 수 있습니다</span></mark></strong></p><p id="41fff2ea-0c3d-4aa8-ab57-f62a6c7c1ff7" class="">Stack: <mark class="highlight-gray">Next.js,  CSS modules, Notion API, MongoDB</mark></p><hr id="2c35d8d4-f248-4e1f-8c11-c56ed28c7eba"/><ul id="b3c6330f-987a-453a-ad94-a98993630ceb" class="bulleted-list"><li style="list-style-type:disc"><strong>Next.js?</strong><ul id="39efdb92-7fbb-4738-ba1b-f3a9e6111f6f" class="block-color-gray bulleted-list"><li style="list-style-type:circle">React와 달리 Next.js는 Router 내장기능이 있음.</li></ul><ul id="7aa51191-a267-4612-88d1-79f4a71a1a45" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-gray">SSR로 SEO 최적화</mark></li></ul><ul id="3edbdfe0-e36b-4638-ab2d-4d3edf11b07c" class="block-color-gray bulleted-list"><li style="list-style-type:circle">Next.js만의 폴더구조(pages/api 등)를 통해 Router, 백엔드 코드까지 쉽게 접근할 수 있음.</li></ul></li></ul><ul id="6ee14aff-581b-4110-90a4-ac5ac07fb4a8" class="bulleted-list"><li style="list-style-type:disc"><strong>Notion API</strong><ul id="03e5152d-9968-4277-bbeb-f5f09ff7cf28" class="block-color-gray bulleted-list"><li style="list-style-type:circle">노션에 정리한 프로젝트 페이지들을 Notion API를 통해 연결</li></ul></li></ul><ul id="d781187f-d2b8-497c-b617-882adb84ebe3" class="bulleted-list"><li style="list-style-type:disc"><strong>RESUME</strong><ul id="582f1ae1-d7d0-46d1-9d82-aa1eb79d8a60" class="block-color-gray bulleted-list"><li style="list-style-type:circle">RESUME의 경우 Notion에 정리한 이력서 페이지를 URL로 연결하기보다 직접 화면에 렌더링 하고 싶었기에 해당 노션 페이지 데이터를 HTML로 다운받은 후 iframe 태그를 사용하여 화면에 렌더링 처리</li></ul></li></ul></div></div><div id="d0e782de-17f6-4169-bc10-191e3549aa1d" class="column-list"><div id="0ceeb0a0-5ef7-4cbb-addd-cddd87c55b38" style="width:18.75%" class="column"><p id="584adb80-278f-4ae0-9728-8ba817342759" class="">2023.01</p><p id="129774ec-9a5a-49c5-9721-d9834436e095" class="">
-</p></div><div id="ab8411f7-661e-4522-88a6-73e81630face" style="width:81.25%" class="column"><p id="1b2fa68e-5154-475e-af9d-f615a7cf7c41" class="block-color-gray_background"><mark class="highlight-orange"><strong>See you letter(Solo Toy Project)</strong></mark></p><p id="64867e95-6938-4bfe-afa9-cc28266159a1" class="">타임캡슐처럼 ‘나’ 혹은 ‘누군가’에게 편지를 쓰고 설정된 기간(1년/6개월/3개월)에 맞춰 편지 형식으로 수신자 이메일로 전송됩니다.</p><p id="33f6a407-d9a5-46b7-b10e-50b2e7412558" class=""> <strong><code><a href="https://github.com/codestates-seb/seb39_main_061">Github</a></code></strong><strong> </strong>| <a href="https://seeyouletter-735f3.web.app"><code><strong>Deploy</strong></code></a></p><p id="d7a0fcb2-2ec5-48d2-b1c3-74d108e8f624" class=""><strong><mark class="highlight-blue"><span style="border-bottom:0.05em solid">👉🏻 프로젝트에 대한 자세한 내용은 </span></mark></strong><a href="https://do-youit.tistory.com/45"><strong><mark class="highlight-red"><span style="border-bottom:0.05em solid">블로그</span></mark></strong></a><strong><mark class="highlight-blue"><span style="border-bottom:0.05em solid">에서 확인하실 수 있습니다</span></mark></strong></p><p id="8fb8a891-96fc-45d9-8460-ba28ba10927d" class="">Stack: <mark class="highlight-gray">React, Redux Toolkit, styled-components, Firebase, TriggerEmail extensions</mark></p><hr id="589b1b57-8414-4b69-840c-678692e61eef"/><ul id="679f9ae1-9020-4421-bb6a-d96e11e05061" class="bulleted-list"><li style="list-style-type:disc"><strong>로그인 / 회원가입 (이메일)</strong><ul id="31a2a8b8-529b-4976-bf28-8c60afd3bfa6" class="block-color-gray bulleted-list"><li style="list-style-type:circle">firebase를 서버로 사용하여 로그인/회원가입 기능 만듦.</li></ul></li></ul><ul id="60cc19f4-ec62-49c8-9013-ba2a95628fec" class="bulleted-list"><li style="list-style-type:disc"><strong>LetterForm 페이지(메인)</strong><ul id="357652f1-6911-41ef-9ca5-3d755e03e550" class="block-color-gray bulleted-list"><li style="list-style-type:circle">편지 내용, 발신자명, 수신자 이메일 데이터를 Redux로 상태관리하여 FireStore에 저장.</li></ul><ul id="16bd0942-1d15-4608-962b-6410195ca93b" class="block-color-gray bulleted-list"><li style="list-style-type:circle">이메일 형식의 유효성검사와 편지 데이터 Firestore에 전송의 순서를 동기 async로 동기 처리.</li></ul></li></ul><ul id="59a8b2a2-79f8-4a0f-928c-86406be6c35a" class="bulleted-list"><li style="list-style-type:disc"><strong>TriggerEmail extensions(Firebase)</strong><ul id="b5f44233-4bbd-4e1a-be23-3afc923bc6e7" class="block-color-gray bulleted-list"><li style="list-style-type:circle">Firestore에서 전송된 이메일을 받을 컬렉션과 형색 포맷을 맞출 컬렉션을 설정 후 LetterForm.jsx에서 데이터 전송 포맷을 동일하게 맞춰 작업 진행.
-컬렉션 형식과 실제 데이터 전송 형식이 일치해야 메일이 전송 됨. 메일 안의 데이터 치환을 위해 핸들바 문법을 사용.</li></ul></li></ul></div></div><div id="fcf80fc5-1e7a-469f-9fb5-360edbdf12aa" class="column-list"><div id="a1cbacfb-1624-4420-a728-7e6f419c4247" style="width:18.75%" class="column"><p id="561f4c67-ff10-4131-9cf4-cf741c84f09c" class="">2022.09 - 10</p></div><div id="d844631e-633c-409a-85ee-35430f4676c6" style="width:81.25%" class="column"><p id="a0d8c28a-78dc-4ac3-807d-01ef3b3585f6" class="block-color-gray_background"><mark class="highlight-orange"><strong>Qiuck Book (코드스테이츠 파이널 / 4인)</strong></mark></p><p id="ead75522-ff98-4fa6-8edd-3374ebeba506" class="">우리 매장의 예약/대기를 QR 코드로 관리하고 기간별 예약 현황을 한눈에!
-(매장 어드민 / 고객 사이트 각각 개발)</p><p id="f46a8e20-182e-489c-b34e-a882023993da" class=""><strong><code><a href="https://github.com/codestates-seb/seb39_main_061">Github</a></code></strong> | <strong> </strong><code><strong><a href="https://quick-book.ml/">Deploy</a></strong></code> <mark class="highlight-gray">(AWS 과금으로 배포 중단)</mark></p><p id="2893fa94-e9da-426d-b90b-07d1ed2ec038" class=""><strong><mark class="highlight-blue"><span style="border-bottom:0.05em solid">👉🏻 프로젝트에 대한 자세한 내용은 </span></mark></strong><strong><mark class="highlight-red"><span style="border-bottom:0.05em solid"><a href="https://www.notion.so/Quick-book-FE-64f8df768bef456e82e01e260d5a52a6">노션 문서</a></span></mark></strong><strong><mark class="highlight-blue"><span style="border-bottom:0.05em solid">에서 확인하실 수 있습니다</span></mark></strong></p><p id="1885c61e-cf64-4ef2-96f6-810ddd6b6ab3" class="">Stack: <mark class="highlight-gray">React, Redux Toolkit, axios, apexChart, CSS modules</mark></p><hr id="91b15777-dcf2-4f00-997b-5fae5c3cb94f"/><p id="5b1cd3f9-1e34-4836-899f-e8fb28cc6ffb" class=""><mark class="highlight-orange"><strong>👇🏻 나의 역할</strong></mark></p><ul id="a0acd47e-59a1-4c1c-8e21-08de8dcb3c8b" class="bulleted-list"><li style="list-style-type:disc"><strong>프로필 페이지: 프로필 Create, Read, Update</strong><ul id="b1378e48-73d8-4801-8c2b-ea0a7805eef9" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-gray">local의 이미지를 브라우저에 불러오고, 서버에 요청하기 위해 formData를 사용해서 이미지(파일) 처리.</mark></li></ul></li></ul><ul id="3b1e6c5c-35d3-4829-9a35-72da7fc686f7" class="bulleted-list"><li style="list-style-type:disc"><strong>대시보드: Bar차트, Pie차트, 캘린더, QR코드(read) 4가지 컴포넌트 분리</strong><ul id="b730f6fe-e3ac-4864-a135-a580a578d1a2" class="block-color-gray bulleted-list"><li style="list-style-type:circle">서버에서 응답받은 데이터를 가공하여 각 차트에 렌더링하고, 렌더링된 데이터들을 사용자가 csv파일로 다운받을 수 있도록 ApexCharts 라이브러리를 사용.</li></ul><ul id="fc5c92fb-4012-4464-8124-03449accb44a" class="block-color-gray bulleted-list"><li style="list-style-type:circle">react-calendar 라이브러리로 캘린더 컴포넌트 생성 후, 오늘 이전의 특정 날짜를 클릭했을 경우 Pie차트에 해당 날짜의 시간별 데이터를 %로 보여지도록 처리.</li></ul></li></ul><ul id="c89d4054-bde3-4aa7-b29a-1bf0068199a2" class="bulleted-list"><li style="list-style-type:disc"><strong>QR코드 페이지: QR코드 Create, Read, Update, Delete</strong><ul id="933fb0f6-e461-4cc0-a5db-b96759166eb3" class="block-color-gray bulleted-list"><li style="list-style-type:circle">React-cr-code 라이브러리로 qr코드를 생성하고, 생성된 QR코드 이미지에 url 삽입 후 formData로 서버 요청 처리.</li></ul></li></ul><ul id="7bb7f36b-950f-4ead-a159-e6d281241c70" class="bulleted-list"><li style="list-style-type:disc"><strong>ETC</strong><ul id="beb292a3-acde-467d-83f5-3ba6be0edf76" class="block-color-gray bulleted-list"><li style="list-style-type:circle">Header, Sidebar 컴포넌트 개발</li></ul><ul id="59ace637-b254-4aab-9354-ed77a91a9846" class="block-color-gray bulleted-list"><li style="list-style-type:circle">git branch로 협업 및 관리 했으며, github에서 main &lt; dev &lt; feat/각자 작업명으로 브랜치를 만들고, 브랜치의 병합이 필요시 충돌 수정 후 merge 진행</li></ul><ul id="6f0e424f-ee2d-4039-a07b-02743e0ada8b" class="block-color-gray bulleted-list"><li style="list-style-type:circle">main page(로그인 전) 제작</li></ul><ul id="43d16582-cf6d-4a75-bfc1-c0c26497afa2" class="block-color-gray bulleted-list"><li style="list-style-type:circle">화면정의서(figma) 제작 &amp; 디자인 총괄 &amp; 로고 디자인</li></ul></li></ul></div></div><h2 id="15e25ce5-e133-4285-b94b-d0bc99606cca" class=""><mark class="highlight-red">03.</mark> Education</h2><hr id="7b2ddc2f-cb0d-41d0-8bb0-c93ae559b0d5"/><div id="fc00b513-0efc-4089-9354-53d74483c18b" class="column-list"><div id="0a89aa0f-fbcb-4076-a29c-0bbe3129358d" style="width:18.749999999999996%" class="column"><p id="8eef1a10-3db1-4505-995d-748d568c00a1" class="">2022.04 - 2022.10</p></div><div id="af98ce9f-f846-42ce-b396-374c099190e9" style="width:81.25%" class="column"><p id="006124e7-0c8f-43a1-b994-0a67aaa1d709" class="block-color-gray_background"><strong>코드스테이츠 (Code States) </strong></p><p id="aa28773b-2987-49bf-91f2-57af68274345" class="">소프트웨어 엔지니어링 프론트엔드 과정 </p><ul id="9865ada2-eaeb-4945-b8e6-6e8b98826455" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Javascript / React 과정 학습</li></ul><ul id="da3036cc-75aa-4f02-9936-67153cd5f232" class="block-color-gray bulleted-list"><li style="list-style-type:disc">HTTP/네트워크 및 Express로 서버 구축 환경 학습</li></ul><ul id="f42a7083-12e3-4628-91f1-aec4ed58d8a9" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Linux/Git 학습</li></ul><ul id="df2ea344-3ddc-44bb-9e19-a486eda432bf" class="block-color-gray bulleted-list"><li style="list-style-type:disc">Backend 인증/보안 학습</li></ul><ul id="d0729b02-501e-4ed4-b6af-26d98c936fe6" class="block-color-gray bulleted-list"><li style="list-style-type:disc">CS/CICD/AWS/TDD 학습</li></ul><ul id="62ea6f60-8073-4b7c-ab3f-86f4b3c72537" class="block-color-gray bulleted-list"><li style="list-style-type:disc">20주 동안 과제 수행 및 페어 프로그래밍과 코드 리뷰 진행</li></ul><ul id="b6538ad8-e76c-4fb7-87ca-36ddf4534690" class="block-color-gray bulleted-list"><li style="list-style-type:disc">협업 프로젝트 2회 진행(프리 프로젝트, 파이널 프로젝트)</li></ul></div></div><div id="0a67f524-3cfb-4276-8231-4d9c47a4da0e" class="column-list"><div id="a3e32005-5fca-4bee-9b78-a242e08e4987" style="width:18.75%" class="column"><p id="ac2e26e0-44e3-4134-8160-24429351fe78" class="">2012.03 - 2016.03</p></div><div id="dd3d6683-5279-4cbf-822e-cbf49b1b88f0" style="width:81.25%" class="column"><p id="2024207c-fc6a-4443-84ee-2699e1921bb4" class="block-color-gray_background"><strong>인천대학교</strong></p><ul id="27906ee3-0035-46bc-9530-567b81514d8c" class="block-color-gray bulleted-list"><li style="list-style-type:disc">조형예술학부 서양화 전공</li></ul></div></div><h2 id="cfbad5e8-9565-41da-ac2f-fce4c6bc1cf7" class=""><mark class="highlight-red">04.</mark> Work Experience</h2><hr id="114cda13-38f4-43b3-9884-b2bb9ebf5b52"/><div id="64975a22-5286-4944-9879-8a327aebeee7" class="column-list"><div id="57415b9a-b8de-4605-af80-083e92d283ba" style="width:18.75%" class="column"><p id="9498acb6-0614-4878-a859-da2b7fd30455" class="">2016.10 - 2021.01</p><p id="2871c1b1-ecc7-44e3-a39e-a205ad4d013f" class="">
-</p></div><div id="7d1c0f4f-d07e-4a03-9a6b-514da4a1239c" style="width:81.25%" class="column"><p id="4c9b2c95-9a09-46cd-98c0-7b13edec8886" class="block-color-gray_background"><strong>(주)마지코리아 / mazi untitled 가방 브랜드 </strong></p><p id="d58d2e83-496e-4569-8b3b-aef3bd46604c" class=""><strong>미니멀한 디자인과 실용적인 패션 가방 브랜드 런칭하며 피봇</strong></p><ul id="3d4adb68-053f-4769-b0ca-754e6a370a88" class="block-color-gray bulleted-list"><li style="list-style-type:disc"><a href="https://www.maziuntitled.com/">홈페이지 웹</a> 관리 운영 및 기획</li></ul><ul id="b2cb250b-9db4-4522-b767-57a3b8287322" class="block-color-gray bulleted-list"><li style="list-style-type:disc">이미지 비쥬얼 디렉터 / 포토그래퍼 </li></ul><ul id="de390896-2e35-428b-889a-52796c23b2fd" class="block-color-gray bulleted-list"><li style="list-style-type:disc">5년만에 연 매출 0원에서 10억원까지 성장</li></ul></div></div><div id="9a343629-d334-4f61-80c1-d8ff1f42b45d" class="column-list"><div id="d6545e27-7508-455c-89d0-13bd661622e3" style="width:18.75%" class="column"><p id="acf42d63-a490-4386-8cee-66405d570688" class="">2013.01 - 2016.10</p><p id="ebcec98b-6efd-4ae6-a012-4204c5366cc6" class="block-color-gray">
-</p></div><div id="4f246323-7e1d-41fb-9aa1-15fe6670b925" style="width:81.25%" class="column"><p id="1264edcc-3b76-4bdf-b1cd-d0a74f193fad" class="block-color-gray_background"><strong>Mazi / Art Bag 가방 브랜드</strong></p><p id="0fa53039-3a5b-41c9-a24f-5bdd63c394bc" class=""><strong>미대생, 신진 작가들의 캔버스 습작으로 단 하나의 오리지널 Art Bag 브랜드 공동창업</strong></p><ul id="2b89226a-8a66-49c7-a415-e2fcd50bb717" class="block-color-gray bulleted-list"><li style="list-style-type:disc">웹 관리 및 디자인 / 포토그래퍼 / 기획</li></ul><ul id="cb9b1c1e-0f51-480a-b421-877c0bb18347" class="block-color-gray bulleted-list"><li style="list-style-type:disc">2015 대구패션페어 잡화부분 대상</li></ul><ul id="ed6dc22c-86b4-41c1-9c38-1f88f0dcf2e1" class="block-color-gray bulleted-list"><li style="list-style-type:disc">2014 창업경진대회 수상</li></ul></div></div><h2 id="8f660772-6625-46fe-be69-6cb3ea3bda8b" class=""><mark class="highlight-red">04.</mark> Introduction</h2><hr id="39b53fdc-ac04-4774-8d05-abf1b9439f11"/><p id="3bca36cf-e407-45e8-945a-7efb033cc2e3" class="">. </p><p id="f12989b4-bf21-4c48-9f81-52e632dc9f85" class="">JavaScript와 React를 시작으로 TypeScript와 Next.js를 공부하며 사용하고 있습니다. 팀 프로젝트 였던 코드스테이츠 파이널 프로젝트(quick-book)에서 중간 포기한 팀원들 부분까지 담당하며 책임감과 애착을 갖고 임했습니다. 내가 맡은 부분이 생소하고 처음이라도 어떻게든 찾아보며 코드와 씨름하여 구현합니다.</p><p id="e9a01d5e-85a4-44f0-a158-4cc90243147a" class="">.</p><p id="0d564a0a-c685-4488-b1f2-e5d929b88d4d" class="">어떤 분야든 <strong>만들어가는 과정</strong>(making)를 중요하게 생각하며 흥미를 갖습니다. 미술을 전공하며 작품을 만들고, 브랜드를 운영하며 제품을 만들고, 취미로 목공을 하며 가구를 만들었습니다. 이제는 프로그래밍으로 서비스, 웹 페이지를 만들고 있습니다. ‘<strong>처음</strong>’과 ‘<strong>변화</strong>’에 익숙하며 필요한 기능은 찾아보고 알아내어 내 것으로 만드는 개발자 입니다.</p><p id="347a5298-27e6-434a-b470-8d890c1d81ad" class="">. </p><p id="b692ca61-217a-4a65-bd44-f7ee62540396" class="">지난 8년간 패션 브랜드를 공동 창업하고, 운영하면서 무엇보다 협업과 <strong>커뮤니케이션</strong>이 중요하다는 것을 경험했습니다. 개발 또한  혼자하는 것이 아니라 함께하는 것입니다. 전체적인 방향성과 팀원들의 진행 상황을 고려하며, 때로는 리딩하고, 때로는 뒤에서 서포트하며 프로젝트를 진행합니다. 제가 이해하고 있는 것이 정확한지 팀원들과 더블체크하며 오버 커뮤니케이션하는 것을 지향합니다.  어떤 일이든지, 함께 지켜야할 가이드가 필요하며, 가이드를 기준으로 우선순위를 정하여 커뮤니케이션하는 것을 중요하게 생각합니다.</p><p id="18a04e54-e8fc-4cbe-9605-d9d657df5020" class="">. </p><figure id="1511388d-788e-4178-8d43-41eaa2b7fce2" class="link-to-page"><a href="https://www.notion.so/1511388d788e41788d4341eaa2b7fce2"><span class="icon">🤝</span>협업한 팀원들의 피드백</a></figure></div></article></body></html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FRONTEND 유인태</title>
+	<style>
+		/* cspell:disable-file */
+		/* webkit printing magic: print all background colors */
+		html {
+			-webkit-print-color-adjust: exact;
+		}
+
+		* {
+			box-sizing: border-box;
+			-webkit-print-color-adjust: exact;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		@media only screen {
+			body {
+				margin: 2em auto;
+				max-width: 900px;
+				color: rgb(55, 53, 47);
+			}
+		}
+
+		body {
+			line-height: 1.5;
+			white-space: pre-wrap;
+		}
+
+		a,
+		a.visited {
+			color: inherit;
+			text-decoration: underline;
+		}
+
+		.pdf-relative-link-path {
+			font-size: 80%;
+			color: #444;
+		}
+
+		h1,
+		h2,
+		h3 {
+			letter-spacing: -0.01em;
+			line-height: 1.2;
+			font-weight: 600;
+			margin-bottom: 0;
+		}
+
+		.page-title {
+			font-size: 2.5rem;
+			font-weight: 700;
+			margin-top: 0;
+			margin-bottom: 0.75em;
+		}
+
+		h1 {
+			font-size: 1.875rem;
+			margin-top: 1.875rem;
+		}
+
+		h2 {
+			font-size: 1.5rem;
+			margin-top: 1.5rem;
+		}
+
+		h3 {
+			font-size: 1.25rem;
+			margin-top: 1.25rem;
+		}
+
+		.source {
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			padding: 1.5em;
+			word-break: break-all;
+		}
+
+		.callout {
+			border-radius: 3px;
+			padding: 1rem;
+		}
+
+		figure {
+			margin: 1.25em 0;
+			page-break-inside: avoid;
+		}
+
+		figcaption {
+			opacity: 0.5;
+			font-size: 85%;
+			margin-top: 0.5em;
+		}
+
+		mark {
+			background-color: transparent;
+		}
+
+		.indented {
+			padding-left: 1.5em;
+		}
+
+		hr {
+			background: transparent;
+			display: block;
+			width: 100%;
+			height: 1px;
+			visibility: visible;
+			border: none;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		@media only print {
+			img {
+				max-height: 100vh;
+				object-fit: contain;
+			}
+		}
+
+		@page {
+			margin: 1in;
+		}
+
+		.collection-content {
+			font-size: 0.875rem;
+		}
+
+		.column-list {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.column {
+			padding: 0 1em;
+		}
+
+		.column:first-child {
+			padding-left: 0;
+		}
+
+		.column:last-child {
+			padding-right: 0;
+		}
+
+		.table_of_contents-item {
+			display: block;
+			font-size: 0.875rem;
+			line-height: 1.3;
+			padding: 0.125rem;
+		}
+
+		.table_of_contents-indent-1 {
+			margin-left: 1.5rem;
+		}
+
+		.table_of_contents-indent-2 {
+			margin-left: 3rem;
+		}
+
+		.table_of_contents-indent-3 {
+			margin-left: 4.5rem;
+		}
+
+		.table_of_contents-link {
+			text-decoration: none;
+			opacity: 0.7;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid rgba(55, 53, 47, 0.09);
+			border-collapse: collapse;
+		}
+
+		table {
+			border-left: none;
+			border-right: none;
+		}
+
+		th,
+		td {
+			font-weight: normal;
+			padding: 0.25em 0.5em;
+			line-height: 1.5;
+			min-height: 1.5em;
+			text-align: left;
+		}
+
+		th {
+			color: rgba(55, 53, 47, 0.6);
+		}
+
+		ol,
+		ul {
+			margin: 0;
+			margin-block-start: 0.6em;
+			margin-block-end: 0.6em;
+		}
+
+		li>ol:first-child,
+		li>ul:first-child {
+			margin-block-start: 0.6em;
+		}
+
+		ul>li {
+			list-style: disc;
+		}
+
+		ul.to-do-list {
+			padding-inline-start: 0;
+		}
+
+		ul.to-do-list>li {
+			list-style: none;
+		}
+
+		.to-do-children-checked {
+			text-decoration: line-through;
+			opacity: 0.375;
+		}
+
+		ul.toggle>li {
+			list-style: none;
+		}
+
+		ul {
+			padding-inline-start: 1.7em;
+		}
+
+		ul>li {
+			padding-left: 0.1em;
+		}
+
+		ol {
+			padding-inline-start: 1.6em;
+		}
+
+		ol>li {
+			padding-left: 0.2em;
+		}
+
+		.mono ol {
+			padding-inline-start: 2em;
+		}
+
+		.mono ol>li {
+			text-indent: -0.4em;
+		}
+
+		.toggle {
+			padding-inline-start: 0em;
+			list-style-type: none;
+		}
+
+		/* Indent toggle children */
+		.toggle>li>details {
+			padding-left: 1.7em;
+		}
+
+		.toggle>li>details>summary {
+			margin-left: -1.1em;
+		}
+
+		.selected-value {
+			display: inline-block;
+			padding: 0 0.5em;
+			background: rgba(206, 205, 202, 0.5);
+			border-radius: 3px;
+			margin-right: 0.5em;
+			margin-top: 0.3em;
+			margin-bottom: 0.3em;
+			white-space: nowrap;
+		}
+
+		.collection-title {
+			display: inline-block;
+			margin-right: 1em;
+		}
+
+		.simple-table {
+			margin-top: 1em;
+			font-size: 0.875rem;
+			empty-cells: show;
+		}
+
+		.simple-table td {
+			height: 29px;
+			min-width: 120px;
+		}
+
+		.simple-table th {
+			height: 29px;
+			min-width: 120px;
+		}
+
+		.simple-table-header-color {
+			background: rgb(247, 246, 243);
+			color: black;
+		}
+
+		.simple-table-header {
+			font-weight: 500;
+		}
+
+		time {
+			opacity: 0.5;
+		}
+
+		.icon {
+			display: inline-block;
+			max-width: 1.2em;
+			max-height: 1.2em;
+			text-decoration: none;
+			vertical-align: text-bottom;
+			margin-right: 0.5em;
+		}
+
+		img.icon {
+			border-radius: 3px;
+		}
+
+		.user-icon {
+			width: 1.5em;
+			height: 1.5em;
+			border-radius: 100%;
+			margin-right: 0.5rem;
+		}
+
+		.user-icon-inner {
+			font-size: 0.8em;
+		}
+
+		.text-icon {
+			border: 1px solid #000;
+			text-align: center;
+		}
+
+		.page-cover-image {
+			display: block;
+			object-fit: cover;
+			width: 100%;
+			max-height: 30vh;
+		}
+
+		.page-header-icon {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.page-header-icon-with-cover {
+			margin-top: -0.72em;
+			margin-left: 0.07em;
+		}
+
+		.page-header-icon img {
+			border-radius: 3px;
+		}
+
+		.link-to-page {
+			margin: 1em 0;
+			padding: 0;
+			border: none;
+			font-weight: 500;
+		}
+
+		p>.user {
+			opacity: 0.5;
+		}
+
+		td>.user,
+		td>time {
+			white-space: nowrap;
+		}
+
+		input[type="checkbox"] {
+			transform: scale(1.5);
+			margin-right: 0.6em;
+			vertical-align: middle;
+		}
+
+		p {
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+		}
+
+		.image {
+			border: none;
+			margin: 1.5em 0;
+			padding: 0;
+			border-radius: 0;
+			text-align: center;
+		}
+
+		.code,
+		code {
+			background: rgba(135, 131, 120, 0.15);
+			border-radius: 3px;
+			padding: 0.2em 0.4em;
+			border-radius: 3px;
+			font-size: 85%;
+			tab-size: 2;
+		}
+
+		code {
+			color: #eb5757;
+		}
+
+		.code {
+			padding: 1.5em 1em;
+		}
+
+		.code-wrap {
+			white-space: pre-wrap;
+			word-break: break-all;
+		}
+
+		.code>code {
+			background: none;
+			padding: 0;
+			font-size: 100%;
+			color: inherit;
+		}
+
+		blockquote {
+			font-size: 1.25em;
+			margin: 1em 0;
+			padding-left: 1em;
+			border-left: 3px solid rgb(55, 53, 47);
+		}
+
+		.bookmark {
+			text-decoration: none;
+			max-height: 8em;
+			padding: 0;
+			display: flex;
+			width: 100%;
+			align-items: stretch;
+		}
+
+		.bookmark-title {
+			font-size: 0.85em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			height: 1.75em;
+			white-space: nowrap;
+		}
+
+		.bookmark-text {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.bookmark-info {
+			flex: 4 1 180px;
+			padding: 12px 14px 14px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.bookmark-image {
+			width: 33%;
+			flex: 1 1 180px;
+			display: block;
+			position: relative;
+			object-fit: cover;
+			border-radius: 1px;
+		}
+
+		.bookmark-description {
+			color: rgba(55, 53, 47, 0.6);
+			font-size: 0.75em;
+			overflow: hidden;
+			max-height: 4.5em;
+			word-break: break-word;
+		}
+
+		.bookmark-href {
+			font-size: 0.75em;
+			margin-top: 0.25em;
+		}
+
+		.sans {
+			font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+		}
+
+		.code {
+			font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+		}
+
+		.serif {
+			font-family: Lyon-Text, Georgia, ui-serif, serif;
+		}
+
+		.mono {
+			font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+		}
+
+		.pdf .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR';
+		}
+
+		.pdf .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+		}
+
+		.pdf .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR';
+		}
+
+		.pdf .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+		}
+
+		.highlight-default {
+			color: rgba(55, 53, 47, 1);
+		}
+
+		.highlight-gray {
+			color: rgba(120, 119, 116, 1);
+			fill: rgba(120, 119, 116, 1);
+		}
+
+		.highlight-brown {
+			color: rgba(159, 107, 83, 1);
+			fill: rgba(159, 107, 83, 1);
+		}
+
+		.highlight-orange {
+			color: rgba(217, 115, 13, 1);
+			fill: rgba(217, 115, 13, 1);
+		}
+
+		.highlight-yellow {
+			color: rgba(203, 145, 47, 1);
+			fill: rgba(203, 145, 47, 1);
+		}
+
+		.highlight-teal {
+			color: rgba(68, 131, 97, 1);
+			fill: rgba(68, 131, 97, 1);
+		}
+
+		.highlight-blue {
+			color: rgba(51, 126, 169, 1);
+			fill: rgba(51, 126, 169, 1);
+		}
+
+		.highlight-purple {
+			color: rgba(144, 101, 176, 1);
+			fill: rgba(144, 101, 176, 1);
+		}
+
+		.highlight-pink {
+			color: rgba(193, 76, 138, 1);
+			fill: rgba(193, 76, 138, 1);
+		}
+
+		.highlight-red {
+			color: rgba(212, 76, 71, 1);
+			fill: rgba(212, 76, 71, 1);
+		}
+
+		.highlight-gray_background {
+			background: rgba(241, 241, 239, 1);
+		}
+
+		.highlight-brown_background {
+			background: rgba(244, 238, 238, 1);
+		}
+
+		.highlight-orange_background {
+			background: rgba(251, 236, 221, 1);
+		}
+
+		.highlight-yellow_background {
+			background: rgba(251, 243, 219, 1);
+		}
+
+		.highlight-teal_background {
+			background: rgba(237, 243, 236, 1);
+		}
+
+		.highlight-blue_background {
+			background: rgba(231, 243, 248, 1);
+		}
+
+		.highlight-purple_background {
+			background: rgba(244, 240, 247, 0.8);
+		}
+
+		.highlight-pink_background {
+			background: rgba(249, 238, 243, 0.8);
+		}
+
+		.highlight-red_background {
+			background: rgba(253, 235, 236, 1);
+		}
+
+		.block-color-default {
+			color: inherit;
+			fill: inherit;
+		}
+
+		.block-color-gray {
+			color: rgba(120, 119, 116, 1);
+			fill: rgba(120, 119, 116, 1);
+		}
+
+		.block-color-brown {
+			color: rgba(159, 107, 83, 1);
+			fill: rgba(159, 107, 83, 1);
+		}
+
+		.block-color-orange {
+			color: rgba(217, 115, 13, 1);
+			fill: rgba(217, 115, 13, 1);
+		}
+
+		.block-color-yellow {
+			color: rgba(203, 145, 47, 1);
+			fill: rgba(203, 145, 47, 1);
+		}
+
+		.block-color-teal {
+			color: rgba(68, 131, 97, 1);
+			fill: rgba(68, 131, 97, 1);
+		}
+
+		.block-color-blue {
+			color: rgba(51, 126, 169, 1);
+			fill: rgba(51, 126, 169, 1);
+		}
+
+		.block-color-purple {
+			color: rgba(144, 101, 176, 1);
+			fill: rgba(144, 101, 176, 1);
+		}
+
+		.block-color-pink {
+			color: rgba(193, 76, 138, 1);
+			fill: rgba(193, 76, 138, 1);
+		}
+
+		.block-color-red {
+			color: rgba(212, 76, 71, 1);
+			fill: rgba(212, 76, 71, 1);
+		}
+
+		.block-color-gray_background {
+			background: rgba(241, 241, 239, 1);
+		}
+
+		.block-color-brown_background {
+			background: rgba(244, 238, 238, 1);
+		}
+
+		.block-color-orange_background {
+			background: rgba(251, 236, 221, 1);
+		}
+
+		.block-color-yellow_background {
+			background: rgba(251, 243, 219, 1);
+		}
+
+		.block-color-teal_background {
+			background: rgba(237, 243, 236, 1);
+		}
+
+		.block-color-blue_background {
+			background: rgba(231, 243, 248, 1);
+		}
+
+		.block-color-purple_background {
+			background: rgba(244, 240, 247, 0.8);
+		}
+
+		.block-color-pink_background {
+			background: rgba(249, 238, 243, 0.8);
+		}
+
+		.block-color-red_background {
+			background: rgba(253, 235, 236, 1);
+		}
+
+		.select-value-color-pink {
+			background-color: rgba(245, 224, 233, 1);
+		}
+
+		.select-value-color-purple {
+			background-color: rgba(232, 222, 238, 1);
+		}
+
+		.select-value-color-green {
+			background-color: rgba(219, 237, 219, 1);
+		}
+
+		.select-value-color-gray {
+			background-color: rgba(227, 226, 224, 1);
+		}
+
+		.select-value-color-translucentGray {
+			background-color: rgba(255, 255, 255, 0.0375);
+		}
+
+		.select-value-color-orange {
+			background-color: rgba(250, 222, 201, 1);
+		}
+
+		.select-value-color-brown {
+			background-color: rgba(238, 224, 218, 1);
+		}
+
+		.select-value-color-red {
+			background-color: rgba(255, 226, 221, 1);
+		}
+
+		.select-value-color-yellow {
+			background-color: rgba(253, 236, 200, 1);
+		}
+
+		.select-value-color-blue {
+			background-color: rgba(211, 229, 239, 1);
+		}
+
+		.checkbox {
+			display: inline-flex;
+			vertical-align: text-bottom;
+			width: 16;
+			height: 16;
+			background-size: 16px;
+			margin-left: 2px;
+			margin-right: 5px;
+		}
+
+		.checkbox-on {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+
+		.checkbox-off {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+	</style>
+</head>
+
+<body>
+	<article id="51e25b25-8710-443f-afe7-543dc52f8d4c" class="page sans">
+		<header>
+			<h1 class="page-title">FRONTEND 유인태</h1>
+		</header>
+		<div class="page-body">
+			<div id="cccf25d5-ef14-4af8-896d-0065aa4e7505" class="column-list">
+				<div id="2303efad-5856-48a3-91c1-7dbfa300b05f" style="width:62.5%" class="column">
+					<h3 id="24a2383c-0cb2-41d6-b172-ae3330f06382" class="">개발을 하며 직면한 문제를 피하지 않습니다.
+						문제 해결을 위해 수많은 시행착오를 겪지만 이 과정을 즐기며, 이를 토대로 유의미한 성장을 이뤄갑니다.
+					</h3>
+					<p id="bb86d71c-f708-42b0-a13e-a357cadb1280" class="">
+					</p>
+					<p id="065618f5-7b1f-43b1-a996-d2c14c380708" class="">📞  <mark
+							class="highlight-brown"><strong>PHONE:</strong></mark> 010-5540-1981</p>
+					<p id="67f4528d-3034-41e8-bd10-d2d289b6b93b" class="">📧  <mark
+							class="highlight-purple"><strong>EMAIL:</strong></mark> honesty407@gmail.com</p>
+					<p id="4d18837c-9a3a-4c2a-a50f-cf15c80f9158" class="">✍🏻 <strong><mark class="highlight-orange">BLOG:
+							</mark></strong><a href="https://do-youit.tistory.com/">do-youit.tistory.com</a></p>
+					<p id="ef1c9634-c9f9-4e4c-b7c2-0061ff3ae3e6" class="">💻 <strong><mark class="highlight-teal">GITHUB:
+							</mark></strong><a href="https://github.com/doityoo">github.com/doityoo</a></p>
+					<!-- <p id="a4e14aac-c2e9-4fd5-a98d-5740a9ce8262" class="">📋  <mark class="highlight-yellow"><strong>RESUME</strong></mark><mark class="highlight-teal"><strong>: </strong></mark><a href="https://url.kr/7jxw4e">https://url.kr/7jxw4e</a></p> -->
+					<!-- <p id="c9b79a43-a8b0-4aaa-8657-d2f21ec3f974" class=""></p> -->
+				</div>
+				<div id="227621c2-6713-4bee-9bd6-76f9d12ab6ea" style="width:37.49999999999999%" class="column">
+					<figure id="2ea49050-ad35-4df1-ad28-3b45a4e6ca4f" class="image" style="text-align:right"><a
+							href="./resume/resume.png"><img style="width:192px" src="./resume/resume.png" /></a></figure>
+				</div>
+			</div>
+			<h2 id="18fb6379-4bdf-4ed8-81ae-66b179076b7b" class=""><mark class="highlight-red">01.</mark> Skills</h2>
+			<hr id="ea61a2f6-aad9-47ce-b070-f191df00831d" />
+			<div id="cc44959a-23de-43bf-9fd8-01b76ac56120" class="column-list">
+				<div id="0d22637b-a3eb-4023-90ee-936bae4d15cc" style="width:33.333333333333336%" class="column">
+					<p id="b62995f1-9648-44cb-9089-0bd8ef304067" class="">💻 <strong>Programming Language</strong></p>
+					<ul id="aca54bff-78b4-4da6-a8e8-58b27d28b0e9" class="bulleted-list">
+						<li style="list-style-type:disc">Javascript</li>
+					</ul>
+					<ul id="ec449bab-8dc8-49cd-8bfc-84a15f3b5c91" class="bulleted-list">
+						<li style="list-style-type:disc">TypeScript</li>
+					</ul>
+					<ul id="29c0f25b-6cc8-4a58-91ff-6586e4ec52fb" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">HTML</li>
+					</ul>
+					<ul id="a97ecf5b-562f-4a9a-83c6-f2f6f11b1567" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">CSS</li>
+					</ul>
+					<p id="caa8088a-854b-450e-af53-aad360adc974" class="">
+					</p>
+				</div>
+				<div id="65c4d370-6c7e-49d0-9cd5-cbee0a5f7fe0" style="width:33.333333333333336%" class="column">
+					<p id="ebe4b742-8cad-4a29-8e34-14f36911703d" class="">📋 <strong>FrameWork &amp; Library</strong></p>
+					<ul id="8ea251cf-14c4-4ed5-b180-b4e0cb6df451" class="bulleted-list">
+						<li style="list-style-type:disc">React</li>
+					</ul>
+					<ul id="710d9365-d448-4d4d-950a-1738173a0bb8" class="bulleted-list">
+						<li style="list-style-type:disc">Next.js</li>
+					</ul>
+					<ul id="cc990c45-1f0e-44cd-9e8d-8a3c65273785" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">Redux-toolkit</li>
+					</ul>
+					<ul id="a7eedae6-5b53-4940-af10-cee445fcc321" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">styled-components</li>
+					</ul>
+					<ul id="41dd4908-6114-4537-87c2-30be78177fb7" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">module-css</li>
+					</ul>
+				</div>
+				<div id="7f2f1dc0-04ac-4167-852e-29d923c8fa4a" style="width:33.33333333333333%" class="column">
+					<p id="b7015752-1b92-4cbd-bbcc-9cab959a011f" class="">🛠️ <strong>Tools & DB</strong></p>
+					<ul id="6f794dbd-00d1-4dec-92f9-d71d426042f6" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">Git</li>
+					</ul>
+					<ul id="61f520a1-45fd-4579-9446-7bd6134ceacb" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">Postman</li>
+					</ul>
+					<ul id="a6eaeb91-09f7-4eb2-96c6-0eaa43c2b8cc" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">Notion</li>
+					</ul>
+					<ul id="0e8ce437-051c-4a10-b1e2-7750410cfff6" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">Firebase(extensions)</li>
+					</ul>
+					<ul id="8f35ef3e-d4d0-4870-8936-dc1e4c2ae515" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">MongoDB</li>
+					</ul>
+					<ul id="6e7a5a01-65ad-4bcd-bd51-8818a205d1bf" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc"><mark class="highlight-gray">AWS</mark></li>
+					</ul>
+					<ul id="9d9517e4-ba79-4df1-b13b-d319cdc9fdf3" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">Figma</li>
+					</ul>
+					<ul id="9d9517e4-ba79-4df1-b13b-d319cdc9fdf3" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">Adobe illustrator, Photoshop, Lightroom</li>
+					</ul>
+				</div>
+			</div>
+			<h2 id="62dfe595-4f09-4f1b-a8eb-f8a8fd599de8" class=""><mark class="highlight-red">02.</mark> Projects</h2>
+			<hr id="296c3458-3d29-44c2-bf2a-08f58234977d" />
+			<div id="219065b4-b6ee-444e-858a-9746649359f1" class="column-list">
+				<div id="1edd5fe0-258f-486c-980c-d863741c5219" style="width:18.75%" class="column">
+					<p id="c64fa9c0-1cb2-4505-ae3d-e44d5ed9d40a" class="">2023.04</p>
+					<p id="7db3e7f4-77ef-41ee-9ea3-4883852e6191" class="">
+					</p>
+				</div>
+				<div id="e432b67c-68bb-4252-83fe-d046aac94ac0" style="width:81.25%" class="column">
+					<p id="b7f4bab5-d657-47ac-9b1d-3a79a5e71e89" class="block-color-gray_background"><mark
+							class="highlight-orange"><strong>TaskBoard(Solo Toy Project)</strong></mark></p>
+					<p id="c44004e7-2bb0-455a-9c99-e93c4700f2e0" class="">TypeScript를 사용하여 기본적인 TaskBoard를 만들었습니다.</p>
+					<p id="d7c0cadb-1727-4021-bb37-a464d43e4967" class=""> <a
+							href="https://github.com/doityoo/TasksBoard"><strong><code>Github</code></strong></a><strong> </strong>|
+						<a href="https://seeyouletter-735f3.web.app"><code><strong>Deploy</strong></code></a></p>
+					<p id="b38f229e-b5f7-4fe1-94d4-639e28ad62aa" class=""><strong><mark class="highlight-blue"><span
+									style="border-bottom:0.05em solid">👉🏻 프로젝트에 대한 자세한 내용은 </span></mark></strong><a
+							href="https://www.notion.so/TaskBoard-46af97bed70e4ff39792038457a76aba"><mark
+								class="highlight-orange"><strong><span
+										style="border-bottom:0.05em solid">노션문서</span></strong></mark></a><strong><mark
+								class="highlight-blue"><span style="border-bottom:0.05em solid">에서 확인하실 수 있습니다</span></mark></strong>
+					</p>
+					<p id="aa5a3789-4ffa-458d-b99c-9e4336939fac" class="">Stack: <mark class="highlight-gray">TypeScript, CSS
+							modules, Firebase</mark></p>
+				</div>
+			</div>
+			<div id="938c0af3-b484-4e5e-9b1d-6f4eb8d8c909" class="column-list">
+				<div id="7ee03d37-6838-46c1-bf64-04ab64724061" style="width:18.75%" class="column">
+					<p id="554b9a2a-55b8-4203-b668-e04eacc36b92" class="">2023.04</p>
+					<p id="c844e29d-74bb-453f-92a4-89d34caeac1a" class="">
+					</p>
+				</div>
+				<div id="871dfba7-5cc9-44de-816b-9374dd75453f" style="width:81.25%" class="column">
+					<p id="d361723e-7735-464a-a35d-001bb44297b5" class="block-color-gray_background"><mark
+							class="highlight-orange"><strong>Portfolio(Solo Web Site)</strong></mark></p>
+					<p id="c9ed7fd1-b68e-492e-8b76-939cd3f3114f" class="">Next.js를 학습하며 개인 포트폴리오 웹사이트를 제작했습니다.</p>
+					<p id="81d84d66-9f7d-446a-a1c4-7c7e72d068c5" class=""> <a
+							href="https://github.com/doityoo/Portfolio"><strong><code>Github</code></strong></a><strong> </strong>| <a
+							href="https://seeyouletter-735f3.web.app"><code><strong>Deploy</strong></code></a></p>
+					<p id="7bdb6334-b709-445e-b5c5-7b552259a2c8" class=""><strong><mark class="highlight-blue"><span
+									style="border-bottom:0.05em solid">👉🏻 프로젝트에 대한 자세한 내용은 </span></mark></strong><mark
+							class="highlight-orange"><a
+								href="https://www.notion.so/Portfolio-Resume-b79a6d85f16443f3a1a9858ade71e0c9"><strong><span
+										style="border-bottom:0.05em solid">노션문서</span></strong></a></mark><strong><mark
+								class="highlight-blue"><span style="border-bottom:0.05em solid">에서 확인하실 수 있습니다</span></mark></strong>
+					</p>
+					<p id="41fff2ea-0c3d-4aa8-ab57-f62a6c7c1ff7" class="">Stack: <mark class="highlight-gray">Next.js, CSS
+							modules, Notion API, MongoDB</mark></p>
+					<hr id="2c35d8d4-f248-4e1f-8c11-c56ed28c7eba" />
+					<ul id="b3c6330f-987a-453a-ad94-a98993630ceb" class="bulleted-list">
+						<li style="list-style-type:disc"><strong>Next.js?</strong>
+							<ul id="39efdb92-7fbb-4738-ba1b-f3a9e6111f6f" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">React와 달리 Next.js는 Router 내장기능이 있음.</li>
+							</ul>
+							<ul id="7aa51191-a267-4612-88d1-79f4a71a1a45" class="bulleted-list">
+								<li style="list-style-type:circle"><mark class="highlight-gray">SSR로 SEO 최적화</mark></li>
+							</ul>
+							<ul id="3edbdfe0-e36b-4638-ab2d-4d3edf11b07c" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">Next.js만의 폴더구조(pages/api 등)를 통해 Router, 백엔드 코드까지 쉽게 접근할 수 있음.</li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="6ee14aff-581b-4110-90a4-ac5ac07fb4a8" class="bulleted-list">
+						<li style="list-style-type:disc"><strong>Notion API</strong>
+							<ul id="03e5152d-9968-4277-bbeb-f5f09ff7cf28" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">노션에 정리한 프로젝트 페이지들을 Notion API를 통해 연결</li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="d781187f-d2b8-497c-b617-882adb84ebe3" class="bulleted-list">
+						<li style="list-style-type:disc"><strong>RESUME</strong>
+							<ul id="582f1ae1-d7d0-46d1-9d82-aa1eb79d8a60" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">RESUME의 경우 Notion에 정리한 이력서 페이지를 URL로 연결하기보다 직접 화면에 렌더링 하고 싶었기에 해당 노션
+									페이지 데이터를 HTML로 다운받은 후 iframe 태그를 사용하여 화면에 렌더링 처리</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="d0e782de-17f6-4169-bc10-191e3549aa1d" class="column-list">
+				<div id="0ceeb0a0-5ef7-4cbb-addd-cddd87c55b38" style="width:18.75%" class="column">
+					<p id="584adb80-278f-4ae0-9728-8ba817342759" class="">2023.01</p>
+					<p id="129774ec-9a5a-49c5-9721-d9834436e095" class="">
+					</p>
+				</div>
+				<div id="ab8411f7-661e-4522-88a6-73e81630face" style="width:81.25%" class="column">
+					<p id="1b2fa68e-5154-475e-af9d-f615a7cf7c41" class="block-color-gray_background"><mark
+							class="highlight-orange"><strong>See you letter(Solo Toy Project)</strong></mark></p>
+					<p id="64867e95-6938-4bfe-afa9-cc28266159a1" class="">타임캡슐처럼 ‘나’ 혹은 ‘누군가’에게 편지를 쓰고 설정된 기간(1년/6개월/3개월)에 맞춰 편지
+						형식으로 수신자 이메일로 전송됩니다.</p>
+					<p id="33f6a407-d9a5-46b7-b10e-50b2e7412558" class="">
+						<strong><code><a href="https://github.com/codestates-seb/seb39_main_061">Github</a></code></strong><strong>
+						</strong>| <a href="https://seeyouletter-735f3.web.app"><code><strong>Deploy</strong></code></a></p>
+					<p id="d7a0fcb2-2ec5-48d2-b1c3-74d108e8f624" class=""><strong><mark class="highlight-blue"><span
+									style="border-bottom:0.05em solid">👉🏻 프로젝트에 대한 자세한 내용은 </span></mark></strong><a
+							href="https://do-youit.tistory.com/45"><strong><mark class="highlight-red"><span
+										style="border-bottom:0.05em solid">블로그</span></mark></strong></a><strong><mark
+								class="highlight-blue"><span style="border-bottom:0.05em solid">에서 확인하실 수 있습니다</span></mark></strong>
+					</p>
+					<p id="8fb8a891-96fc-45d9-8460-ba28ba10927d" class="">Stack: <mark class="highlight-gray">React, Redux
+							Toolkit, styled-components, Firebase, TriggerEmail extensions</mark></p>
+					<hr id="589b1b57-8414-4b69-840c-678692e61eef" />
+					<ul id="679f9ae1-9020-4421-bb6a-d96e11e05061" class="bulleted-list">
+						<li style="list-style-type:disc"><strong>로그인 / 회원가입 (이메일)</strong>
+							<ul id="31a2a8b8-529b-4976-bf28-8c60afd3bfa6" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">firebase를 서버로 사용하여 로그인/회원가입 기능 만듦.</li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="60cc19f4-ec62-49c8-9013-ba2a95628fec" class="bulleted-list">
+						<li style="list-style-type:disc"><strong>LetterForm 페이지(메인)</strong>
+							<ul id="357652f1-6911-41ef-9ca5-3d755e03e550" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">편지 내용, 발신자명, 수신자 이메일 데이터를 Redux로 상태관리하여 FireStore에 저장.</li>
+							</ul>
+							<ul id="16bd0942-1d15-4608-962b-6410195ca93b" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">이메일 형식의 유효성검사와 편지 데이터 Firestore에 전송의 순서를 동기 async로 동기 처리.</li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="59a8b2a2-79f8-4a0f-928c-86406be6c35a" class="bulleted-list">
+						<li style="list-style-type:disc"><strong>TriggerEmail extensions(Firebase)</strong>
+							<ul id="b5f44233-4bbd-4e1a-be23-3afc923bc6e7" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">Firestore에서 전송된 이메일을 받을 컬렉션과 형색 포맷을 맞출 컬렉션을 설정 후 LetterForm.jsx에서 데이터
+									전송 포맷을 동일하게 맞춰 작업 진행.
+									컬렉션 형식과 실제 데이터 전송 형식이 일치해야 메일이 전송 됨. 메일 안의 데이터 치환을 위해 핸들바 문법을 사용.</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="fcf80fc5-1e7a-469f-9fb5-360edbdf12aa" class="column-list">
+				<div id="a1cbacfb-1624-4420-a728-7e6f419c4247" style="width:18.75%" class="column">
+					<p id="561f4c67-ff10-4131-9cf4-cf741c84f09c" class="">2022.09 - 10</p>
+				</div>
+				<div id="d844631e-633c-409a-85ee-35430f4676c6" style="width:81.25%" class="column">
+					<p id="a0d8c28a-78dc-4ac3-807d-01ef3b3585f6" class="block-color-gray_background"><mark
+							class="highlight-orange"><strong>Qiuck Book (코드스테이츠 파이널 / 4인)</strong></mark></p>
+					<p id="ead75522-ff98-4fa6-8edd-3374ebeba506" class="">우리 매장의 예약/대기를 QR 코드로 관리하고 기간별 예약 현황을 한눈에!
+						(매장 어드민 / 고객 사이트 각각 개발)</p>
+					<p id="f46a8e20-182e-489c-b34e-a882023993da" class="">
+						<strong><code><a href="https://github.com/codestates-seb/seb39_main_061">Github</a></code></strong> |
+						<strong> </strong><code><strong><a href="https://quick-book.ml/">Deploy</a></strong></code> <mark
+							class="highlight-gray">(AWS 과금으로 배포 중단)</mark></p>
+					<p id="2893fa94-e9da-426d-b90b-07d1ed2ec038" class=""><strong><mark class="highlight-blue"><span
+									style="border-bottom:0.05em solid">👉🏻 프로젝트에 대한 자세한 내용은 </span></mark></strong><strong><mark
+								class="highlight-red"><span style="border-bottom:0.05em solid"><a
+										href="https://www.notion.so/Quick-book-FE-64f8df768bef456e82e01e260d5a52a6">노션
+										문서</a></span></mark></strong><strong><mark class="highlight-blue"><span
+									style="border-bottom:0.05em solid">에서 확인하실 수 있습니다</span></mark></strong></p>
+					<p id="1885c61e-cf64-4ef2-96f6-810ddd6b6ab3" class="">Stack: <mark class="highlight-gray">React, Redux
+							Toolkit, axios, apexChart, CSS modules</mark></p>
+					<hr id="91b15777-dcf2-4f00-997b-5fae5c3cb94f" />
+					<p id="5b1cd3f9-1e34-4836-899f-e8fb28cc6ffb" class=""><mark class="highlight-orange"><strong>👇🏻 나의
+								역할</strong></mark></p>
+					<ul id="a0acd47e-59a1-4c1c-8e21-08de8dcb3c8b" class="bulleted-list">
+						<li style="list-style-type:disc"><strong>프로필 페이지: 프로필 Create, Read, Update</strong>
+							<ul id="b1378e48-73d8-4801-8c2b-ea0a7805eef9" class="bulleted-list">
+								<li style="list-style-type:circle"><mark class="highlight-gray">local의 이미지를 브라우저에 불러오고, 서버에 요청하기 위해
+										formData를 사용해서 이미지(파일) 처리.</mark></li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="3b1e6c5c-35d3-4829-9a35-72da7fc686f7" class="bulleted-list">
+						<li style="list-style-type:disc"><strong>대시보드: Bar차트, Pie차트, 캘린더, QR코드(read) 4가지 컴포넌트 분리</strong>
+							<ul id="b730f6fe-e3ac-4864-a135-a580a578d1a2" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">서버에서 응답받은 데이터를 가공하여 각 차트에 렌더링하고, 렌더링된 데이터들을 사용자가 csv파일로 다운받을 수 있도록
+									ApexCharts 라이브러리를 사용.</li>
+							</ul>
+							<ul id="fc5c92fb-4012-4464-8124-03449accb44a" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">react-calendar 라이브러리로 캘린더 컴포넌트 생성 후, 오늘 이전의 특정 날짜를 클릭했을 경우 Pie차트에 해당
+									날짜의 시간별 데이터를 %로 보여지도록 처리.</li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="c89d4054-bde3-4aa7-b29a-1bf0068199a2" class="bulleted-list">
+						<li style="list-style-type:disc"><strong>QR코드 페이지: QR코드 Create, Read, Update, Delete</strong>
+							<ul id="933fb0f6-e461-4cc0-a5db-b96759166eb3" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">React-cr-code 라이브러리로 qr코드를 생성하고, 생성된 QR코드 이미지에 url 삽입 후 formData로 서버
+									요청 처리.</li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="7bb7f36b-950f-4ead-a159-e6d281241c70" class="bulleted-list">
+						<li style="list-style-type:disc"><strong>ETC</strong>
+							<ul id="beb292a3-acde-467d-83f5-3ba6be0edf76" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">Header, Sidebar 컴포넌트 개발</li>
+							</ul>
+							<ul id="59ace637-b254-4aab-9354-ed77a91a9846" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">git branch로 협업 및 관리 했으며, github에서 main &lt; dev &lt; feat/각자 작업명으로
+									브랜치를 만들고, 브랜치의 병합이 필요시 충돌 수정 후 merge 진행</li>
+							</ul>
+							<ul id="6f0e424f-ee2d-4039-a07b-02743e0ada8b" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">main page(로그인 전) 제작</li>
+							</ul>
+							<ul id="43d16582-cf6d-4a75-bfc1-c0c26497afa2" class="block-color-gray bulleted-list">
+								<li style="list-style-type:circle">화면정의서(figma) 제작 &amp; 디자인 총괄 &amp; 로고 디자인</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<h2 id="15e25ce5-e133-4285-b94b-d0bc99606cca" class=""><mark class="highlight-red">03.</mark> Education</h2>
+			<hr id="7b2ddc2f-cb0d-41d0-8bb0-c93ae559b0d5" />
+			<div id="fc00b513-0efc-4089-9354-53d74483c18b" class="column-list">
+				<div id="0a89aa0f-fbcb-4076-a29c-0bbe3129358d" style="width:18.749999999999996%" class="column">
+					<p id="8eef1a10-3db1-4505-995d-748d568c00a1" class="">2022.04 - 2022.10</p>
+				</div>
+				<div id="af98ce9f-f846-42ce-b396-374c099190e9" style="width:81.25%" class="column">
+					<p id="006124e7-0c8f-43a1-b994-0a67aaa1d709" class="block-color-gray_background"><strong>코드스테이츠 (Code States)
+						</strong></p>
+					<p id="aa28773b-2987-49bf-91f2-57af68274345" class="">소프트웨어 엔지니어링 프론트엔드 과정 </p>
+					<ul id="9865ada2-eaeb-4945-b8e6-6e8b98826455" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">Javascript / React 과정 학습</li>
+					</ul>
+					<ul id="da3036cc-75aa-4f02-9936-67153cd5f232" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">HTTP/네트워크 및 Express로 서버 구축 환경 학습</li>
+					</ul>
+					<ul id="f42a7083-12e3-4628-91f1-aec4ed58d8a9" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">Linux/Git 학습</li>
+					</ul>
+					<ul id="df2ea344-3ddc-44bb-9e19-a486eda432bf" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">Backend 인증/보안 학습</li>
+					</ul>
+					<ul id="d0729b02-501e-4ed4-b6af-26d98c936fe6" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">CS/CICD/AWS/TDD 학습</li>
+					</ul>
+					<ul id="62ea6f60-8073-4b7c-ab3f-86f4b3c72537" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">20주 동안 과제 수행 및 페어 프로그래밍과 코드 리뷰 진행</li>
+					</ul>
+					<ul id="b6538ad8-e76c-4fb7-87ca-36ddf4534690" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">협업 프로젝트 2회 진행(프리 프로젝트, 파이널 프로젝트)</li>
+					</ul>
+				</div>
+			</div>
+			<div id="0a67f524-3cfb-4276-8231-4d9c47a4da0e" class="column-list">
+				<div id="a3e32005-5fca-4bee-9b78-a242e08e4987" style="width:18.75%" class="column">
+					<p id="ac2e26e0-44e3-4134-8160-24429351fe78" class="">2012.03 - 2016.03</p>
+				</div>
+				<div id="dd3d6683-5279-4cbf-822e-cbf49b1b88f0" style="width:81.25%" class="column">
+					<p id="2024207c-fc6a-4443-84ee-2699e1921bb4" class="block-color-gray_background"><strong>인천대학교</strong></p>
+					<ul id="27906ee3-0035-46bc-9530-567b81514d8c" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">조형예술학부 서양화 전공</li>
+					</ul>
+				</div>
+			</div>
+			<h2 id="cfbad5e8-9565-41da-ac2f-fce4c6bc1cf7" class=""><mark class="highlight-red">04.</mark> Work Experience</h2>
+			<hr id="114cda13-38f4-43b3-9884-b2bb9ebf5b52" />
+			<div id="64975a22-5286-4944-9879-8a327aebeee7" class="column-list">
+				<div id="57415b9a-b8de-4605-af80-083e92d283ba" style="width:18.75%" class="column">
+					<p id="9498acb6-0614-4878-a859-da2b7fd30455" class="">2016.10 - 2021.01</p>
+					<p id="2871c1b1-ecc7-44e3-a39e-a205ad4d013f" class="">
+					</p>
+				</div>
+				<div id="7d1c0f4f-d07e-4a03-9a6b-514da4a1239c" style="width:81.25%" class="column">
+					<p id="4c9b2c95-9a09-46cd-98c0-7b13edec8886" class="block-color-gray_background"><strong>(주)마지코리아 / mazi
+							untitled 가방 브랜드 </strong></p>
+					<p id="d58d2e83-496e-4569-8b3b-aef3bd46604c" class=""><strong>미니멀한 디자인과 실용적인 패션 가방 브랜드 런칭하며 피봇</strong></p>
+					<ul id="3d4adb68-053f-4769-b0ca-754e6a370a88" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc"><a href="https://www.maziuntitled.com/">홈페이지 웹</a> 관리 운영 및 기획</li>
+					</ul>
+					<ul id="b2cb250b-9db4-4522-b767-57a3b8287322" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">이미지 비쥬얼 디렉터 / 포토그래퍼 </li>
+					</ul>
+					<ul id="de390896-2e35-428b-889a-52796c23b2fd" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">5년만에 연 매출 0원에서 10억원까지 성장</li>
+					</ul>
+				</div>
+			</div>
+			<div id="9a343629-d334-4f61-80c1-d8ff1f42b45d" class="column-list">
+				<div id="d6545e27-7508-455c-89d0-13bd661622e3" style="width:18.75%" class="column">
+					<p id="acf42d63-a490-4386-8cee-66405d570688" class="">2013.01 - 2016.10</p>
+					<p id="ebcec98b-6efd-4ae6-a012-4204c5366cc6" class="block-color-gray">
+					</p>
+				</div>
+				<div id="4f246323-7e1d-41fb-9aa1-15fe6670b925" style="width:81.25%" class="column">
+					<p id="1264edcc-3b76-4bdf-b1cd-d0a74f193fad" class="block-color-gray_background"><strong>Mazi / Art Bag 가방
+							브랜드</strong></p>
+					<p id="0fa53039-3a5b-41c9-a24f-5bdd63c394bc" class=""><strong>미대생, 신진 작가들의 캔버스 습작으로 단 하나의 오리지널 Art Bag 브랜드
+							공동창업</strong></p>
+					<ul id="2b89226a-8a66-49c7-a415-e2fcd50bb717" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">웹 관리 및 디자인 / 포토그래퍼 / 기획</li>
+					</ul>
+					<ul id="cb9b1c1e-0f51-480a-b421-877c0bb18347" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">2015 대구패션페어 잡화부분 대상</li>
+					</ul>
+					<ul id="ed6dc22c-86b4-41c1-9c38-1f88f0dcf2e1" class="block-color-gray bulleted-list">
+						<li style="list-style-type:disc">2014 창업경진대회 수상</li>
+					</ul>
+				</div>
+			</div>
+			<h2 id="8f660772-6625-46fe-be69-6cb3ea3bda8b" class=""><mark class="highlight-red">04.</mark> Introduction</h2>
+			<hr id="39b53fdc-ac04-4774-8d05-abf1b9439f11" />
+			<p id="3bca36cf-e407-45e8-945a-7efb033cc2e3" class="">. </p>
+			<p id="f12989b4-bf21-4c48-9f81-52e632dc9f85" class="">JavaScript와 React를 시작으로 TypeScript와 Next.js를 공부하며 사용하고 있습니다.
+				팀 프로젝트 였던 코드스테이츠 파이널 프로젝트(quick-book)에서 중간 포기한 팀원들 부분까지 담당하며 책임감과 애착을 갖고 임했습니다. 내가 맡은 부분이 생소하고 처음이라도 어떻게든 찾아보며
+				코드와 씨름하여 구현합니다.</p>
+			<p id="e9a01d5e-85a4-44f0-a158-4cc90243147a" class="">.</p>
+			<p id="0d564a0a-c685-4488-b1f2-e5d929b88d4d" class="">어떤 분야든 <strong>만들어가는 과정</strong>(making)를 중요하게 생각하며 흥미를
+				갖습니다. 미술을 전공하며 작품을 만들고, 브랜드를 운영하며 제품을 만들고, 취미로 목공을 하며 가구를 만들었습니다. 이제는 프로그래밍으로 서비스, 웹 페이지를 만들고 있습니다.
+				‘<strong>처음</strong>’과 ‘<strong>변화</strong>’에 익숙하며 필요한 기능은 찾아보고 알아내어 내 것으로 만드는 개발자 입니다.</p>
+			<p id="347a5298-27e6-434a-b470-8d890c1d81ad" class="">. </p>
+			<p id="b692ca61-217a-4a65-bd44-f7ee62540396" class="">지난 8년간 패션 브랜드를 공동 창업하고, 운영하면서 무엇보다 협업과
+				<strong>커뮤니케이션</strong>이 중요하다는 것을 경험했습니다. 개발 또한 혼자하는 것이 아니라 함께하는 것입니다. 전체적인 방향성과 팀원들의 진행 상황을 고려하며, 때로는 리딩하고, 때로는
+				뒤에서 서포트하며 프로젝트를 진행합니다. 제가 이해하고 있는 것이 정확한지 팀원들과 더블체크하며 오버 커뮤니케이션하는 것을 지향합니다. 어떤 일이든지, 함께 지켜야할 가이드가 필요하며, 가이드를
+				기준으로 우선순위를 정하여 커뮤니케이션하는 것을 중요하게 생각합니다.</p>
+			<p id="18a04e54-e8fc-4cbe-9605-d9d657df5020" class="">. </p>
+			<figure id="1511388d-788e-4178-8d43-41eaa2b7fce2" class="link-to-page"><a
+					href="https://www.notion.so/1511388d788e41788d4341eaa2b7fce2"><span class="icon">🤝</span>협업한 팀원들의 피드백</a>
+			</figure>
+		</div>
+	</article>
+</body>
+
+</html>
